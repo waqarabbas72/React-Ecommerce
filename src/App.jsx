@@ -3,22 +3,23 @@ import Navbar from './components/Navbar/Navbar';
 import Slider from './components/Slider/Slider';
 import Cards from './components/Cards.jsx/Cards';
 import Slides from './components/Slides/Slides';
+import Slide from './components/Slides/Slide';
 import { useDispatch } from 'react-redux';
 import { categories } from './store/Slices/cardSlice';
 import { useGetCategoriesListQuery } from './fashionApi';
 
 const App = () => {
-  const { data, isLoading, error } = useGetCategoriesListQuery()
+  // const { data, isLoading, error } = useGetCategoriesListQuery()
   
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  useEffect(() => {
-      if(!isLoading){
-        dispatch(categories(data))
-      }else if (isLoading){
-        console.log('loDING')
-      }
-  }, [dispatch, data])
+  // useEffect(() => {
+  //     if(!isLoading){
+  //       dispatch(categories(data))
+  //     }else if (isLoading){
+  //       console.log('loDING')
+  //     }
+  // }, [dispatch, data])
 
 
 
@@ -28,6 +29,7 @@ const App = () => {
       <Slider />
       <Cards />
       <Slides />
+      <Slide />
     </>
   )
 };
