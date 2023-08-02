@@ -21,7 +21,7 @@ const Slider = () => {
             className='md:mx-10 mt-5'
         >
 
-            <div className='w-full flex  items-center justify-center  bg-gray-200'>
+            <div className='w-full flex  items-center justify-center  bg-gray-100'>
                 <div className='flex flex-col md:flex-row  w-[80%] items-start md:items-center'>
                     <div className=' flex-1 pt-10 md:pt-0 md:ml-5 text-start'>
                         <p className='text-lg'>New Arrivals 2023</p>
@@ -34,7 +34,7 @@ const Slider = () => {
                 </div>
             </div>
 
-            <div className='w-full flex  items-center justify-center bg-gray-200'>
+            <div className='w-full flex  items-center justify-center bg-gray-100'>
                 <div className='flex flex-col md:flex-row  w-[80%] items-start md:items-center'>
                     <div className=' flex-1 pt-10 md:pt-0 md:ml-5 text-start'>
                         <p className='text-lg'>New Arrivals 2023</p>
@@ -47,7 +47,7 @@ const Slider = () => {
                 </div>
             </div>
 
-            <div className='w-full flex  items-center justify-center bg-gray-200'>
+            <div className='w-full flex  items-center justify-center bg-gray-100'>
                 <div className='flex flex-col md:flex-row  w-[80%] items-start md:items-center'>
                     <div className=' flex-1 pt-10 md:pt-0 md:ml-5 text-start'>
                         <p className='text-lg'>New Arrivals 2023</p>
