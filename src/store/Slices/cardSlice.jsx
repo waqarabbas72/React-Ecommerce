@@ -6,11 +6,11 @@ const cardSlice = createSlice({
         apiData: []
     },
     reducers: {
-        categories(state, action) {
+        products(state, action) {
             state.apiData = action.payload;
         }
     }
 })
 
-export const { categories } = cardSlice.actions;
+export const { products } = cardSlice.actions;
 export default cardSlice.reducer;

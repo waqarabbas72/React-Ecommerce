@@ -14,9 +14,12 @@ export const fashionApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getCategoriesList: builder.query({
+      query: () => createRequest(`/categories/list`),
+    }),
+    getProductsList: builder.query({
       query: () => createRequest(`/products/list`),
     }),
   }),
 });
 
-export const { useGetCategoriesListQuery } = fashionApi;
+export const { useGetCategoriesListQuery  , useGetProductsListQuery} = fashionApi;

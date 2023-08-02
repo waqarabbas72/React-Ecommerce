@@ -1,16 +1,24 @@
 import React from 'react'
-import Button from '../Button/Button';
+import bags from '../../images/6-2-women-bag-png-hd.png';
+import clothing from '../../images/clothings.png';
+import shoes from '../../images/shoes.png'
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 
+const data = [
+    { name: 'Bags', btn: 'Shop Now', img: bags },
+    { name: 'Clothing', btn: 'Shop Now', img: clothing },
+    { name: 'Shoes', btn: 'Shop Now', img: shoes }
+];
 
-const Card = ({ data }) => {
+const Cards = () => {
     return (
-        <>
-            {data.map((item , index) => (
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:mx-10 my-6'>
+
+            {data.map((item, index) => (
                 <div className='bg-gray-200 flex justify-between items-center px-6 h-80 ' key={index}>
                     <div className='flex flex-col gap-4'>
                         <h1 className='text-4xl' >{item.name} </h1>
-                        <div className='flex items-center justify-between gap-1 border border-black py-1 px-3 cursor-pointer hover:bg-red-600 hover:text-white hover:border-red-600 duration-200'>
+                        <div className='flex items-center justify-between gap-1 border border-black py-1 px-3 cursor-pointer hover:bg-rose-800 hover:text-white  duration-200'>
                             <button className='border-none hover:bg-transparent '>{item.btn}</button>
                             <ArrowRightIcon className='h-6' />
                         </div>
@@ -20,8 +28,8 @@ const Card = ({ data }) => {
                     </div>
                 </div>
             ))}
-        </>
+        </div>
     )
 };
 
-export default Card;
+export default Cards;

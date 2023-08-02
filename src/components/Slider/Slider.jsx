@@ -3,9 +3,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import Button from '../Button/Button';
 
-import slide1 from '../../images/s1.webp'
+import slide1 from '../../images/s1.png'
 import slide2 from '../../images/s2.png';
-import slide3 from '../../images/s3.webp';
+import slide3 from '../../images/s3.png';
 
 
 const Slider = () => {

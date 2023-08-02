@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Button = ({ name, className }) => {
+const Button = ({ name }) => {
   return (
     <div>
       <button
-        className={'border border-black bg-blue py-2 px-7  hover:bg-red-800 hover:text-white hover:border-red-800 duration-300'}>
+        className={'border border-black bg-blue py-2 px-7  hover:bg-rose-800 hover:text-white duration-300'}>
         {name}
       </button>
     </div>

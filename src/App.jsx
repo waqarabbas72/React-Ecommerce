@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react'
 import Navbar from './components/Navbar/Navbar';
 import Slider from './components/Slider/Slider';
-import Cards from './components/Cards.jsx/Cards';
+import Cards from './components/Cards/Cards';
+import CategoryBtn from './components/CategoryBtn';
 import Slides from './components/Slides/Slides';
-import Slide from './components/Slides/Slide';
+import ProductList from './components/ProductList';
+import OurServices from './components/OurServices/OurServices';
 import { useDispatch } from 'react-redux';
-import { categories } from './store/Slices/cardSlice';
-import { useGetCategoriesListQuery } from './fashionApi';
+import { products } from './store/Slices/cardSlice';
+import { useGetProductsListQuery } from './fashionApi';
 
 const App = () => {
-  // const { data, isLoading, error } = useGetCategoriesListQuery()
+  // const { data, isLoading, error } = useGetProductsListQuery()
   
   // const dispatch = useDispatch()
 
   // useEffect(() => {
   //     if(!isLoading){
-  //       dispatch(categories(data))
+  //       dispatch(products(data))
   //     }else if (isLoading){
   //       console.log('loDING')
   //     }
@@ -28,8 +30,10 @@ const App = () => {
       <Navbar />
       <Slider />
       <Cards />
+      <CategoryBtn />
       <Slides />
-      <Slide />
+      <ProductList />
+      <OurServices />
     </>
   )
 };
