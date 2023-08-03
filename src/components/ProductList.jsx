@@ -5,8 +5,8 @@ import Loader from './Loader'
 
 const ProductList = () => {
 
-    const { data, isLoading } = useGetProductsListQuery()
-    console.log(data);
+    const { data, isLoading, error } = useGetProductsListQuery()
+    console.log(error, 'error');
 
     return (
         <div>

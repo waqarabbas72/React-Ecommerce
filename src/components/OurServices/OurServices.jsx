@@ -1,20 +1,14 @@
 import React from 'react'
-import { TruckIcon, CurrencyDollarIcon, ReceiptPercentIcon, PhoneIcon } from '@heroicons/react/20/solid';
+import { FaTruck, FaDollarSign, FaPercentage, FaPhone } from 'react-icons/fa';
 
 
 const data = [
-    { name: 'Free Delivery', desc: 'Orders from all item', icon: 'truck' },
-    { name: 'Return & Refund', desc: 'Money back guarantee', icon: 'dollar' },
-    { name: 'Member Discount', desc: 'Onevery order over $140.00', icon: 'percent' },
-    { name: 'Support 24/7', desc: 'Contact us 24 hours a day', icon: 'phone' },
+    { name: 'Free Delivery', desc: 'Orders from all item', icon: FaTruck },
+    { name: 'Return & Refund', desc: 'Money back guarantee', icon: FaDollarSign },
+    { name: 'Member Discount', desc: 'Onevery order over $140.00', icon: FaPercentage },
+    { name: 'Support 24/7', desc: 'Contact us 24 hours a day', icon: FaPhone },
 ]
 
-const Icons = {
-    truck: TruckIcon,
-    dollar: CurrencyDollarIcon,
-    percent: ReceiptPercentIcon,
-    phone: PhoneIcon
-};
 
 
 const OurServices = () => {
@@ -29,11 +23,11 @@ const OurServices = () => {
             <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mx-auto max-w-2xl p-6 pb-16  sm:px-6  lg:max-w-7xl lg:px-8 border my-4'>
                 {
                     data.map((item, i) => {
-                        const Logo = Icons[item.icon]
+
                         return (
-                            <div className='flex justify-center gap-5 border-b-2 lg:border-b-0 lg:border-l-2' key={i}>
+                            <div className='flex justify-center gap-5 border-b-2 lg:border-b-0 lg:border-l-2 p-2' key={i}>
                                 <div>
-                                    <Logo />
+                                    <item.icon className='h-16 w-6' />
                                 </div>
 
                                 <div className=''>
