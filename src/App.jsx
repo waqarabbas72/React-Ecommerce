@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import { useDispatch } from 'react-redux';
 import { products } from './store/Slices/cardSlice';
 import { useGetProductsListQuery } from './fashionApi';
+import ShoppingCart from './components/ShoppingCart';
 
 const App = () => {
   // const { data, isLoading, error } = useGetProductsListQuery()
@@ -36,6 +37,7 @@ const App = () => {
       <ProductList />
       <OurServices />
       <Footer />
+     <ShoppingCart />
     </>
   )
 };

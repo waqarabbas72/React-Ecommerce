@@ -4,16 +4,21 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import logo from '../../images/logo.png'
 import { ShoppingBagIcon } from '@heroicons/react/20/solid'
+import ShoppingCart from '../ShoppingCart';
+import { controlCart } from '../../store/Slices/cardSlice';
+import { useDispatch } from 'react-redux'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
-export default function Example() {
+export default function Navbar() {
+
+  const dispatch = useDispatch()
   return (
-    <Disclosure as="nav" className="bg-white shadow">
+    <Disclosure as="nav" className="bg-white shadow fixed z-10 w-full mt-0 top-0">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-8xl px-2 sm:px-4 lg:px-8 shadow-xl">
+          <div className="mx-auto  max-w-8xl px-2 sm:px-4 lg:px-8 shadow-xl ">
             <div className="flex h-16 justify-between">
               <div className="flex px-2 lg:px-0">
                 <div className="flex flex-shrink-0 items-center">
@@ -75,7 +80,7 @@ export default function Example() {
                   className="flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mx-2 absolute sm:relative sm:right-0  right-20"
                 >
                   <span className="sr-only">View Cart</span>
-                  <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" />
+                  <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" onClick={() => dispatch(controlCart())} />
                 </button>
               </div>
 
