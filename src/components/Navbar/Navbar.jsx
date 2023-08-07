@@ -15,7 +15,7 @@ export default function Navbar() {
 
   const dispatch = useDispatch()
   return (
-    <Disclosure as="nav" className="bg-white shadow fixed z-10 w-full mt-0 top-0">
+    <Disclosure as="nav" className="bg-white shadow fixed z-40 w-full mt-0 top-0">
       {({ open }) => (
         <>
           <div className="mx-auto  max-w-8xl px-2 sm:px-4 lg:px-8 shadow-xl ">

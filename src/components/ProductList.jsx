@@ -12,7 +12,7 @@ const ProductList = () => {
         <div>
             <div className="text-center mt-10 lg:mt-24 mb-7">
                 <p className="text-rose-800 font-medium">All Product Shop</p>
-                <p className="text-4xl font-medium">Customer Favorite Style Product</p>
+                <p className="text-xl sm:text-4xl font-medium">Customer Favorite Style Product</p>
             </div>
 
 
