@@ -1,5 +1,5 @@
 import React from 'react'
-import Slider from '../components/Slider/Slider'
+import TopCarousel from '../components/Carousel/TopCarousel'
 import Cards from '../components/Cards/Cards'
 import CategoryBtn from '../components/CategoryBtn'
 import Slides from '../components/Slides/Slides'
@@ -10,7 +10,7 @@ import ShoppingCart from '../components/ShoppingCart'
 const Home = () => {
   return (
     <div>
-       <Slider />
+      <TopCarousel />
       <Cards />
       <CategoryBtn />
       <Slides />

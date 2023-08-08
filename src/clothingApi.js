@@ -18,14 +18,17 @@ export const clothingApi = createApi({
   reducerPath: "clothingApi",
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
-    getClothesList: builder.query({
+    getProductList: builder.query({
       query: () => createRequest(`/products/list`),
     }),
 
-    getClothesDetail: builder.query({
+    getProductDetail: builder.query({
       query: (id) => createRequest(`/products/detail`, { webID: id }),
     }),
+    getCategoryList : builder.query({
+      query : () => createRequest(`/categories/list`)
+    })
   }),
 });
 
-export const { useGetClothesListQuery, useGetClothesDetailQuery } = clothingApi;
+export const { useGetProductListQuery, useGetProductDetailQuery , useGetCategoryListQuery } = clothingApi;

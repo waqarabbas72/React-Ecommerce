@@ -7,7 +7,7 @@ const cardSlice = createSlice({
         apiData: [],
         showCart: false,
         productQuickview: false,
-        productId: ''
+        productId: '',
     },
     reducers: {
         products(state, action) {
@@ -21,7 +21,7 @@ const cardSlice = createSlice({
         },
         fetchProductId(state, action){
             state.productId = action.payload
-        }
+        },
         
     }
 })

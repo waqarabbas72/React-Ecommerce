@@ -1,12 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { useGetProductsListQuery } from '../fashionApi'
 import Loader from './Loader'
 
 const ProductList = () => {
 
     const { data, isLoading, error } = useGetProductsListQuery()
-    console.log(error, 'error');
 
     return (
         <div>

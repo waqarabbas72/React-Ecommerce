@@ -4,7 +4,7 @@ import 'swiper/css/scrollbar';
 import { Keyboard, Mousewheel, Scrollbar } from "swiper/modules";
 import { useGetProductsListQuery } from "../../fashionApi";
 import Loader from "../Loader";
-import { useGetClothesListQuery } from "../../clothingApi";
+import { useGetProductListQuery } from "../../clothingApi";
 import { StarIcon } from "@heroicons/react/24/outline";
 import { quickView, fetchProductId } from "../../store/Slices/cardSlice";
 import { useDispatch } from "react-redux";
@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 const Slides = () => {
     const dispatch = useDispatch()
 
-    const { data, isLoading } = useGetClothesListQuery()
+    const { data, isLoading } = useGetProductListQuery()
     if (isLoading) console.log('Loading');
     console.log(data?.payload?.products);
     
@@ -77,7 +77,7 @@ const Slides = () => {
                                                     <div className=" absolute bottom-0 p-8 w-full opacity-0 group-hover:opacity-100">
                                                         <button className=" font-medium text-base leading-4 text-gray-800 bg-white py-3 w-full">Add to Cart</button>
                                                          <Link>
-                                                         <button className=" bg-transparent font-medium text-base leading-4 border-2 border-white py-3 w-full mt-2 text-white" onClick={() => handleClick(item.webID)}> </button>
+                                                         <button className=" bg-transparent font-medium text-base leading-4 border-2 border-white py-3 w-full mt-2 text-white" onClick={() => handleClick(item.webID)}>Quick View</button>
                                                          </Link>
                                                     </div>
                                                 </div>

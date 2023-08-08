@@ -8,7 +8,7 @@ import slide2 from '../../images/s2.png';
 import slide3 from '../../images/s3.png';
 
 
-const Slider = () => {
+const TopCarousel = () => {
 
     return (
 
@@ -18,7 +18,7 @@ const Slider = () => {
             showStatus={false}
             autoPlay={true}
             infiniteLoop={true}
-            className='md:mx-10 mt-5'
+            className='md:mx-10 mt-16'
         >
 
             <div className='w-full flex  items-center justify-center  bg-gray-100'>
@@ -65,4 +65,4 @@ const Slider = () => {
     )
 };
 
-export default Slider;
+export default TopCarousel;

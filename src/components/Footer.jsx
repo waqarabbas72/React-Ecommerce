@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../images/logo.png'
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedin, FaMailBulk, FaLocationArrow } from 'react-icons/fa'
-import { useGetClothesListQuery } from '../clothingApi';
+
 
 const btns = [
   { icon: FaFacebookF },

@@ -1,8 +1,8 @@
 import React from 'react'
-import { useGetCategoriesListQuery } from '../fashionApi';
+import { useGetCategoryListQuery } from '../clothingApi';
 
 const CategoryBtn = () => {
-    const { data } = useGetCategoriesListQuery();
+    const { data } = useGetCategoryListQuery();
     console.log(data);
 
     return (
@@ -13,8 +13,8 @@ const CategoryBtn = () => {
             <div className='flex justify-center gap-4 flex-wrap '>
 
                 {
-                    data?.map((item, i) => (
-                        <button className='border py-2 px-3 hover:text-gray-500' key={i}>{item.CatName}</button>
+                    data?.payload?.categories.map((item, i) => (
+                        <button className='border py-2 px-3 hover:text-gray-500' key={i}>{item.name}</button>
                     ))
                 }
             </div>
