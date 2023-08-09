@@ -8,6 +8,7 @@ const cardSlice = createSlice({
         showCart: false,
         productQuickview: false,
         productId: '',
+        cartData : []
     },
     reducers: {
         products(state, action) {
@@ -22,9 +23,12 @@ const cardSlice = createSlice({
         fetchProductId(state, action){
             state.productId = action.payload
         },
+        addToCart(state , action){
+            state.cartData.push(action.payload)
+        }
         
     }
 })
 
-export const { products, controlCart, quickView, fetchProductId } = cardSlice.actions;
+export const { products, controlCart, quickView, fetchProductId , addToCart } = cardSlice.actions;
 export default cardSlice.reducer;

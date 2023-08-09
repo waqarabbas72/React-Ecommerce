@@ -8,6 +8,7 @@ import OurServices from '../components/OurServices/OurServices'
 import ShoppingCart from '../components/ShoppingCart'
 
 const Home = () => {
+
   return (
     <div>
       <TopCarousel />

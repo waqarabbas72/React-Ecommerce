@@ -4,7 +4,6 @@ import { useGetCategoryListQuery } from '../clothingApi';
 const CategoryBtn = () => {
     const { data } = useGetCategoryListQuery();
     console.log(data);
-
     return (
         <div className='my-16'>
             <div>
@@ -13,8 +12,8 @@ const CategoryBtn = () => {
             <div className='flex justify-center gap-4 flex-wrap '>
 
                 {
-                    data?.payload?.categories.map((item, i) => (
-                        <button className='border py-2 px-3 hover:text-gray-500' key={i}>{item.name}</button>
+                    data?.map((item, i) => (
+                        <button className='border py-2 px-3 hover:text-gray-500' key={i}>{item}</button>
                     ))
                 }
             </div>
