@@ -3,7 +3,6 @@ import { useGetCategoryListQuery } from '../clothingApi';
 
 const CategoryBtn = () => {
     const { data } = useGetCategoryListQuery();
-    console.log(data);
     return (
         <div className='my-16'>
             <div>

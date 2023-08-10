@@ -1,10 +1,15 @@
 import React from 'react'
-import { useGetProductsListQuery } from '../fashionApi'
 import Loader from './Loader'
+import { useGetProductListQuery } from '../clothingApi'
+import { Link } from 'react-router-dom'
+import { ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { addToCart } from '../store/Slices/cardSlice'
+import { useDispatch } from 'react-redux'
 
 const ProductList = () => {
 
-    const { data, isLoading, error } = useGetProductsListQuery()
+    const dispatch = useDispatch()
+    const { data, isLoading, error } = useGetProductListQuery()
 
     return (
         <div>
@@ -22,23 +27,28 @@ const ProductList = () => {
 
                             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                                 {
-                                    data?.results?.slice(0, 12).map((product, i) => (
-                                        <a className="group cursor-pointer" key={i}>
-                                            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                                    data?.slice(10).map((product, i) => (
+                                        <div className="cursor-pointer shadow-lg p-2" key={i}>
+                                            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-7">
                                                 <img
-                                                    src={product.images[0].url}
-                                                    className="h-full w-full object-cover object-center group-hover:opacity-75 hover:rotate-12 hover:scale-125 transition-all duration-500"
+                                                    src={product.image}
+                                                    className="h-72 w-72 object-center group-hover:opacity-75 hover:rotate-12 hover:scale-125 transition-all duration-500 mx-auto "
                                                 />
                                             </div>
-                                            <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
-                                            <p className="mt-1 text-lg font-medium text-gray-900">{product.price.formattedValue}</p>
-                                        </a>
+                                            <div>
+                                                <h3 className="mt-4 text-sm text-gray-700">{product.title}</h3>
+                                                <div className='flex justify-between items-center my-2'>
+                                                    <p className="mt-1 text-lg font-medium text-gray-900">${product.price}</p>
+                                                    <ShoppingCartIcon className='h-8 text-red-500 cursor-pointer' onClick={() => dispatch(addToCart(product))} />
+                                                </div>
+                                            </div>
+                                        </div>
                                     ))
                                 }
                             </div>
 
                             <div className='flex justify-center my-10'>
-                                <button className='border py-2  px-4 text-center hover:bg-rose-800 hover:text-white duration-500'><a href="#">Discover More</a></button>
+                                <Link to={`/allProducts`} className='border py-2  px-4 text-center hover:bg-rose-800 hover:text-white duration-500'>Discover More</Link>
                             </div>
                         </div>
                     ) : (<Loader />)}

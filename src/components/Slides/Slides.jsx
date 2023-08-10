@@ -2,7 +2,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import 'swiper/css/scrollbar';
 import { Keyboard, Mousewheel, Scrollbar } from "swiper/modules";
-import { useGetProductsListQuery } from "../../fashionApi";
 import Loader from "../Loader";
 import { useGetProductListQuery } from "../../clothingApi";
 import { StarIcon } from "@heroicons/react/24/outline";
@@ -16,8 +15,6 @@ const Slides = () => {
     const dispatch = useDispatch()
 
     const { data, isLoading, error } = useGetProductListQuery()
-    console.log(data, "SlidesData");
-    if (isLoading) console.log('Loading');
 
     const handleClick = (id) => {
         dispatch(fetchProductId(id))
@@ -67,13 +64,13 @@ const Slides = () => {
                                 spaceBetween={20}
                                 slidesPerView={5}
                             >
-                                {data?.map((item, i) => {
+                                {data?.slice(0, 7).map((item, i) => {
                                     return (
                                         <SwiperSlide key={i} className="group relative ">
                                             <div className=" relative mb-10">
                                                 <div className=" relative group">
                                                     <div className=" flex justify-center items-center opacity-0 bg-gradient-to-t from-gray-800 via-gray-800 to-opacity-30 group-hover:opacity-50 absolute top-0 left-0 h-full w-full"></div>
-                                                    <img className=" w-full" src={item.image} alt="A girl Posing Img" />
+                                                    <img className=" w-60 h-72 object-center mx-auto" src={item.image} alt="A girl Posing Img" />
                                                     <div className=" absolute bottom-0 p-8 w-full opacity-0 group-hover:opacity-100">
                                                         <button className=" font-medium text-base leading-4 text-gray-800 bg-white py-3 w-full" onClick={() => dispatch(addToCart(item))}>Add to Cart</button>
                                                         <Link>

@@ -6,6 +6,7 @@ import Slides from '../components/Slides/Slides'
 import ProductList from '../components/ProductList'
 import OurServices from '../components/OurServices/OurServices'
 import ShoppingCart from '../components/ShoppingCart'
+import NewsLetter from '../components/NewsLetter'
 
 const Home = () => {
 
@@ -13,10 +14,11 @@ const Home = () => {
     <div>
       <TopCarousel />
       <Cards />
-      <CategoryBtn />
       <Slides />
+      <CategoryBtn />
       <ProductList />
       <OurServices />
+      <NewsLetter />
       <ShoppingCart />
     </div>
   )

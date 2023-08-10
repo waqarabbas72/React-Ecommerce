@@ -4,15 +4,20 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import logo from '../../images/logo.png'
 import { ShoppingBagIcon } from '@heroicons/react/20/solid'
-import ShoppingCart from '../ShoppingCart';
 import { controlCart } from '../../store/Slices/cardSlice';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 export default function Navbar() {
+
+  const cartItems = useSelector((state) => state.card.cartData)
+  const itemsNo = cartItems.length
+  console.log(itemsNo);
+
+
 
   const dispatch = useDispatch()
   return (
@@ -35,7 +40,7 @@ export default function Navbar() {
                   </Link>
 
                   <Link to={`/allProducts`} className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-                    Products
+                    All Products
                   </Link>
 
                   <Link to={`/blog`} className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
@@ -71,7 +76,16 @@ export default function Navbar() {
                   className="flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mx-2 absolute sm:relative sm:right-0  right-20"
                 >
                   <span className="sr-only">View Cart</span>
-                  <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" onClick={() => dispatch(controlCart())} />
+                  <div className='relative'>
+                    <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" onClick={() => dispatch(controlCart())} />
+                    {
+                      itemsNo > 0 ? (
+                        <div className='h-4 w-4 border rounded-full text-xs text-center absolute -top-2 -right-2 z-10 bg-red-500 text-white'>{itemsNo}</div>
+                        ) : (
+                        <></>
+                        )
+                    }
+                  </div>
                 </button>
               </div>
 
@@ -160,7 +174,7 @@ export default function Navbar() {
               </Link>
 
               <Link to={`/allProducts`} className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800">
-                Products
+                All Products
               </Link>
 
               <Link to={`/blog`} className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800">

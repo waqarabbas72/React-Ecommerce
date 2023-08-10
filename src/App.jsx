@@ -7,6 +7,8 @@ import QuickView from './components/QuickView';
 import AllProducts from './pages/AllProducts';
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
+import ShoppingCart from './components/ShoppingCart';
+
 
 
 const App = () => {
@@ -22,6 +24,7 @@ const App = () => {
           <Route path='/blog' element={<Blog />} />
           <Route path='/contact' element={<Contact/>} />
         </Routes>
+        <ShoppingCart />
         <Footer />
       </BrowserRouter>
     </>
