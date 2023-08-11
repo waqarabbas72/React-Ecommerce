@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Loader from './Loader'
 import { useGetProductListQuery } from '../clothingApi'
 import { Link } from 'react-router-dom'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
-import { addToCart } from '../store/Slices/cardSlice'
+import { addToCart, itemsInCart } from '../store/Slices/cardSlice'
 import { useDispatch } from 'react-redux'
 
 const ProductList = () => {
 
     const dispatch = useDispatch()
     const { data, isLoading, error } = useGetProductListQuery()
+    
+    
+    const handleAdd = (itemsData) => {
+        dispatch(addToCart(itemsData))
+        dispatch(itemsInCart())
+    }
+
 
     return (
         <div>
@@ -39,7 +46,7 @@ const ProductList = () => {
                                                 <h3 className="mt-4 text-sm text-gray-700">{product.title}</h3>
                                                 <div className='flex justify-between items-center my-2'>
                                                     <p className="mt-1 text-lg font-medium text-gray-900">${product.price}</p>
-                                                    <ShoppingCartIcon className='h-8 text-red-500 cursor-pointer' onClick={() => dispatch(addToCart(product))} />
+                                                    <ShoppingCartIcon className='h-8 text-red-500 cursor-pointer' onClick={() => handleAdd(product)} />
                                                 </div>
                                             </div>
                                         </div>
@@ -54,9 +61,8 @@ const ProductList = () => {
                     ) : (<Loader />)}
                 </>
             </div>
-
         </div>
     )
-}
+};
 
-export default ProductList
+export default ProductList;

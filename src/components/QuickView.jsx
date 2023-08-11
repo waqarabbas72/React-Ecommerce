@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from 'react-redux'
-import { quickView, addToCart } from "../store/Slices/cardSlice";
+import { quickView, addToCart, itemsInCart } from "../store/Slices/cardSlice";
 import { useDispatch } from "react-redux";
 import { StarIcon } from "@heroicons/react/24/outline";
 import { useGetProductDetailQuery } from "../clothingApi";
@@ -8,10 +8,7 @@ import { useGetProductDetailQuery } from "../clothingApi";
 
 const QuickView = () => {
     const prodId = useSelector((state) => state.card.productId)
-
     const { data } = useGetProductDetailQuery(prodId)
-
-
 
     const { productQuickview } = useSelector((state) => state.card)
 
@@ -25,6 +22,10 @@ const QuickView = () => {
         setSize(value);
     };
     const dispatch = useDispatch()
+
+    const handleDispatch = (itemData) => {
+        dispatch(addToCart(itemData))
+    }
     return (
         <>
             {
@@ -88,7 +89,7 @@ const QuickView = () => {
                                         <p className=" mt-4 font-normal text-sm leading-3 text-gray-500 hover:text-gray-600 duration-100 underline cursor-pointer">Find the perfect size?</p>
 
                                         <div className="flex flex-col w-full space-y-4 mt-10">
-                                            <button className="border border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 md:w-96 w-full hover:bg-black text-base font-medium leading-4 bg-gray-800 py-4 text-white" onClick={() => dispatch(addToCart(data))}>Add to Cart</button>
+                                            <button className="border border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 md:w-96 w-full hover:bg-black text-base font-medium leading-4 bg-gray-800 py-4 text-white" onClick={() => handleDispatch(item)}>Add to Cart</button>
                                             <button className="border border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 md:w-96 w-full hover:bg-gray-300 text-base font-medium leading-4 text-gray-800 py-4 bg-white">Buy Now</button>
                                         </div>
                                     </div>

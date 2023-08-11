@@ -54,12 +54,7 @@ function ShoppingCart() {
                                                     <div className="flex items-center justify-between pt-5 pr-6">
                                                         <p className="text-sm underline text-red-500 cursor-pointer" onClick={() => dispatch(removeItem(item.id))}>Remove</p>
                                                         <div className="flex gap-3">
-                                                            <span className="cursor-pointer" onClick={() => {
-                                                                dispatch(decreaseItem(item))
-                                                                if (item.quantity === 1) {
-                                                                    dispatch(removeItem(item.id))
-                                                                }
-                                                            }}>-</span>
+                                                            <span className="cursor-pointer" onClick={() => { dispatch(decreaseItem(item))}}>-</span>
                                                             <span>{item.quantity}</span>
                                                             <span className="cursor-pointer" onClick={() => dispatch(increaseItem(item))} >+</span>
                                                         </div>

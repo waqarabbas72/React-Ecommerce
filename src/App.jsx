@@ -8,12 +8,16 @@ import AllProducts from './pages/AllProducts';
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 import ShoppingCart from './components/ShoppingCart';
+import { itemsInCart } from './store/Slices/cardSlice';
+import { useDispatch } from 'react-redux';
 
 
 
 const App = () => {
 
-  return (
+  
+
+return (
     <>
       <BrowserRouter>
         <Navbar />
@@ -22,7 +26,7 @@ const App = () => {
           <Route path='/quickView/:id' element={<QuickView />} />
           <Route path='/allProducts' element={<AllProducts />} />
           <Route path='/blog' element={<Blog />} />
-          <Route path='/contact' element={<Contact/>} />
+          <Route path='/contact' element={<Contact />} />
         </Routes>
         <ShoppingCart />
         <Footer />

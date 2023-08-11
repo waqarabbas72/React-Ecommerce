@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 
 
@@ -10,7 +10,8 @@ const cardSlice = createSlice({
         showCart: false,
         productQuickview: false,
         productId: '',
-        cartData: []
+        cartData: [],
+        cartItemsQuantity: 0
     },
     reducers: {
         products(state, action) {
@@ -26,30 +27,38 @@ const cardSlice = createSlice({
             state.productId = action.payload
         },
         addToCart(state, action) {
-         
-            const mulItems = { ...action.payload, quantity: 1 }
-            state.cartData.push(mulItems)
-        },
-        removeItem(state, action) {
-            let updatedData = state.cartData.filter((currentEl) => currentEl.id != action.payload)
-            return {
-                ...state,
-                cartData: updatedData
+            const existingItemIndex = state.cartData.findIndex(item => item.id === action.payload.id);
+            if (existingItemIndex !== -1) {
+                state.cartData[existingItemIndex].quantity += 1;
+            } else {
+                state.cartData.push({ ...action.payload, quantity: 1 });
             }
         },
+        itemsInCart(state) {
+            let cartQuantity = state.cartData.reduce((initialVal, currentVal) => {
+                const { quantity } = currentVal
+                return initialVal + quantity;
+            }, 0)
+
+            state.cartItemsQuantity = cartQuantity
+
+        },
+        removeItem(state, action) {
+            state.cartData = state.cartData.filter(item => item.id !== action.payload);
+        },
         increaseItem(state, action) {
-            const incIndex = state.cartData.findIndex((item) => item.id === action.payload.id)
-            if (state.cartData[incIndex].quantity > 0) {
-                state.cartData[incIndex].quantity += 1
+            const itemsToIncrease = state.cartData.find(item => item.id === action.payload.id);
+            if (itemsToIncrease) {
+                itemsToIncrease.quantity += 1;
             }
         },
         decreaseItem(state, action) {
-            const incIndex = state.cartData.findIndex((item) => item.id === action.payload.id)
-            if (state.cartData[incIndex].quantity >= 1) {
-                state.cartData[incIndex].quantity -= 1
-            } else if (state.cartData[incIndex].quantity === 1) {
+            const itemsToDecrease = state.cartData.findIndex((item) => item.id === action.payload.id)
+            if (state.cartData[itemsToDecrease].quantity > 1) {
+                state.cartData[itemsToDecrease].quantity -= 1
+            } else if (state.cartData[itemsToDecrease].quantity === 1) {
                 const nextData = state.cartData.filter((item) => item.id !== action.payload.id)
-                state.apiData = nextData
+                state.cartData = nextData
             }
 
         },
@@ -62,5 +71,16 @@ const cardSlice = createSlice({
     },
 })
 
-export const { products, controlCart, quickView, fetchProductId, addToCart, removeItem, clearCart, increaseItem, decreaseItem } = cardSlice.actions;
+export const {
+    products,
+    controlCart,
+    quickView,
+    fetchProductId,
+    addToCart,
+    removeItem,
+    clearCart,
+    increaseItem,
+    decreaseItem,
+    itemsInCart } = cardSlice.actions;
+
 export default cardSlice.reducer;
