@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from 'react-redux'
-import { quickView, addToCart, itemsInCart } from "../store/Slices/cardSlice";
+import { quickView, addToCart, itemsInCart, calculateCartSubtotal } from "../store/Slices/cardSlice";
 import { useDispatch } from "react-redux";
 import { StarIcon } from "@heroicons/react/24/outline";
 import { useGetProductDetailQuery } from "../clothingApi";
@@ -25,6 +25,7 @@ const QuickView = () => {
 
     const handleDispatch = (itemData) => {
         dispatch(addToCart(itemData))
+        dispatch(calculateCartSubtotal())
     }
     return (
         <>

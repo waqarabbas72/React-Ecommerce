@@ -14,8 +14,13 @@ function classNames(...classes) {
 export default function Navbar() {
 
   const cartItems = useSelector((state) => state.card.cartItemsQuantity)
-
   const dispatch = useDispatch()
+
+  const handleCart = () => {
+    dispatch(controlCart())
+  }
+
+  
   return (
     <Disclosure as="nav" className="bg-white shadow fixed z-40 w-full mt-0 top-0">
       {({ open }) => (
@@ -73,7 +78,7 @@ export default function Navbar() {
                 >
                   <span className="sr-only">View Cart</span>
                   <div className='relative'>
-                    <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" onClick={() => dispatch(controlCart())} />
+                    <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" onClick={() => handleCart()} />
                     {
                       cartItems > 0 ? (
                         <div className='h-4 w-4 border rounded-full text-xs text-center absolute -top-2 -right-2 z-10 bg-red-500 text-white'>{cartItems}</div>

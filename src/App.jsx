@@ -8,14 +8,9 @@ import AllProducts from './pages/AllProducts';
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 import ShoppingCart from './components/ShoppingCart';
-import { itemsInCart } from './store/Slices/cardSlice';
-import { useDispatch } from 'react-redux';
-
-
+import Checkout from './pages/Checkout';
 
 const App = () => {
-
-  
 
 return (
     <>
@@ -27,6 +22,7 @@ return (
           <Route path='/allProducts' element={<AllProducts />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/checkout' element={<Checkout />} />
         </Routes>
         <ShoppingCart />
         <Footer />

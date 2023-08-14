@@ -4,6 +4,7 @@ import { controlCart, removeItem, clearCart, decreaseItem, addToCart, increaseIt
 import { XMarkIcon, StarIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import findGif from '../images/cart.gif'
+import { Link } from "react-router-dom";
 
 
 
@@ -12,8 +13,13 @@ function ShoppingCart() {
     const showBag = useSelector((state) => state.card.showCart)
     const addToCart = useSelector((state) => state.card.cartData)
 
+    const handleCart = () => {
+        dispatch(controlCart())
+    }
 
-
+    const cartSubtotal = 1000;
+    const shippingFee = 10;
+    const tax = 5;
 
     return (
         <>
@@ -23,7 +29,7 @@ function ShoppingCart() {
                         <div className="flex md:flex-row flex-col justify-end" id="cart">
                             <div className="lg:w-1/2 w-full  px-5 md:pr-4 py-8 bg-white overflow-hidden h-screen" id="scroll">
                                 <div className="flex items-center justify-between px-2 w-full z-10 mb-2 border-b-2 py-3 bg-gray-300">
-                                    <div className="text-gray-500 hover:text-red-600 cursor-pointer" onClick={() => dispatch(controlCart())}>
+                                    <div className="text-gray-500 hover:text-red-600 cursor-pointer" onClick={() => handleCart()}>
                                         <XMarkIcon className="h-8 mr-4" />
                                     </div>
                                     <p className="text-3xl font-black leading-10 text-gray-800">Shopping Cart</p>
@@ -51,14 +57,15 @@ function ShoppingCart() {
                                                     <p className="text-sm text-gray-600 md:pt-0 pt-2">Category : {item.category}</p>
                                                     <p className="text-sm text-gray-600 my-1">Reviews : {item.rating.count}</p>
                                                     <p className="text-sm text-gray-600 flex items-center">Ratings : <StarIcon className="h-4 mx-1" /> {item.rating.rate}</p>
+                                                    <p className="text-sm text-gray-600 my-1">Price : ${item.price}</p>
                                                     <div className="flex items-center justify-between pt-5 pr-6">
                                                         <p className="text-sm underline text-red-500 cursor-pointer" onClick={() => dispatch(removeItem(item.id))}>Remove</p>
                                                         <div className="flex gap-3">
-                                                            <span className="cursor-pointer" onClick={() => { dispatch(decreaseItem(item))}}>-</span>
+                                                            <span className="cursor-pointer" onClick={() => { dispatch(decreaseItem(item)) }}>-</span>
                                                             <span>{item.quantity}</span>
                                                             <span className="cursor-pointer" onClick={() => dispatch(increaseItem(item))} >+</span>
                                                         </div>
-                                                        <p className="text-sm font-black leading-none text-gray-800">${item.price}</p>
+                                                        <p className="text-sm font-black leading-none text-gray-800">${item.subtotal.toFixed(2)}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -85,25 +92,25 @@ function ShoppingCart() {
                                                     <p className="text-3xl font-black leading-9 text-gray-800">Summary</p>
                                                     <div className="flex items-center justify-between pt-16">
                                                         <p className="text-base leading-none text-gray-800">Subtotal</p>
-                                                        <p className="text-base leading-none text-gray-800">$9,000</p>
+                                                        <p className="text-base leading-none text-gray-800">${cartSubtotal}</p>
                                                     </div>
                                                     <div className="flex items-center justify-between pt-5">
                                                         <p className="text-base leading-none text-gray-800">Shipping</p>
-                                                        <p className="text-base leading-none text-gray-800">$30</p>
+                                                        <p className="text-base leading-none text-gray-800">${shippingFee}</p>
                                                     </div>
                                                     <div className="flex items-center justify-between pt-5">
                                                         <p className="text-base leading-none text-gray-800">Tax</p>
-                                                        <p className="text-base leading-none text-gray-800">$35</p>
+                                                        <p className="text-base leading-none text-gray-800">${tax}</p>
                                                     </div>
                                                 </div>
-                                                <div>
+                                                <div className="mb-6">
                                                     <div className="flex items-center pb-6 justify-between lg:pt-5 pt-20">
                                                         <p className="text-2xl leading-normal text-gray-800">Total</p>
-                                                        <p className="text-2xl font-bold leading-normal text-right text-gray-800">$10,240</p>
+                                                        <p className="text-2xl font-bold leading-normal text-right text-gray-800">${cartSubtotal + shippingFee + tax}</p>
                                                     </div>
-                                                    <button className="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
+                                                    <Link to={`/checkout`} onClick={() => handleCart()} className="w-full px-5 py-3 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
                                                         Checkout
-                                                    </button>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>

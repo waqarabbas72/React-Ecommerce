@@ -21,6 +21,7 @@ const Slides = () => {
         dispatch(quickView())
     }
 
+
     return (
         <div className="m-2 sm:m-10 relative">
             <div className="text-center my-10">
