@@ -11,8 +11,6 @@ const AllProducts = () => {
     const dispatch = useDispatch()
 
     const { data, isLoading } = useGetProductListQuery()
-    console.log(data);
-
     const handleClick = (id) => {
         dispatch(fetchProductId(id))
         dispatch(quickView())

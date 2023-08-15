@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { controlCart, removeItem, clearCart, decreaseItem, addToCart, increaseItem } from "../store/Slices/cardSlice";
+import { controlCart, removeItem, clearCart, decreaseItem, addToCart, increaseItem, getTotal } from "../store/Slices/cardSlice";
 import { XMarkIcon, StarIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import findGif from '../images/cart.gif'
@@ -17,9 +17,12 @@ function ShoppingCart() {
         dispatch(controlCart())
     }
 
-    const cartSubtotal = 1000;
-    const shippingFee = 10;
-    const tax = 5;
+
+    const cartSubtotal = useSelector((state) => state.card.cartItemsSubtotal)
+    const shippingFee = 20;
+    const tax = 0.02;
+    const taxAmount = cartSubtotal * tax;
+    const cartTotalAmount = cartSubtotal + shippingFee + taxAmount
 
     return (
         <>
@@ -65,7 +68,7 @@ function ShoppingCart() {
                                                             <span>{item.quantity}</span>
                                                             <span className="cursor-pointer" onClick={() => dispatch(increaseItem(item))} >+</span>
                                                         </div>
-                                                        <p className="text-sm font-black leading-none text-gray-800">${item.subtotal.toFixed(2)}</p>
+                                                        <p className="text-sm font-black leading-none text-gray-800">${(item.price * item.quantity).toFixed(2)}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -92,21 +95,21 @@ function ShoppingCart() {
                                                     <p className="text-3xl font-black leading-9 text-gray-800">Summary</p>
                                                     <div className="flex items-center justify-between pt-16">
                                                         <p className="text-base leading-none text-gray-800">Subtotal</p>
-                                                        <p className="text-base leading-none text-gray-800">${cartSubtotal}</p>
+                                                        <p className="text-base leading-none text-gray-800 font-medium">${(cartSubtotal).toFixed(2)}</p>
                                                     </div>
                                                     <div className="flex items-center justify-between pt-5">
                                                         <p className="text-base leading-none text-gray-800">Shipping</p>
-                                                        <p className="text-base leading-none text-gray-800">${shippingFee}</p>
+                                                        <p className="text-base leading-none text-gray-800 font-medium">${shippingFee}</p>
                                                     </div>
                                                     <div className="flex items-center justify-between pt-5">
                                                         <p className="text-base leading-none text-gray-800">Tax</p>
-                                                        <p className="text-base leading-none text-gray-800">${tax}</p>
+                                                        <p className="text-base leading-none text-gray-800 font-medium">${tax}</p>
                                                     </div>
                                                 </div>
                                                 <div className="mb-6">
                                                     <div className="flex items-center pb-6 justify-between lg:pt-5 pt-20">
                                                         <p className="text-2xl leading-normal text-gray-800">Total</p>
-                                                        <p className="text-2xl font-bold leading-normal text-right text-gray-800">${cartSubtotal + shippingFee + tax}</p>
+                                                        <p className="text-2xl font-bold leading-normal text-right text-gray-800">${(cartTotalAmount).toFixed(2)}</p>
                                                     </div>
                                                     <Link to={`/checkout`} onClick={() => handleCart()} className="w-full px-5 py-3 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
                                                         Checkout

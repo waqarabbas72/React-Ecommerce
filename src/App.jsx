@@ -9,10 +9,17 @@ import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 import ShoppingCart from './components/ShoppingCart';
 import Checkout from './pages/Checkout';
+import { useDispatch } from 'react-redux';
+import { itemsInCart } from './store/Slices/cardSlice';
 
 const App = () => {
+  const dispatch = useDispatch()
 
-return (
+  useEffect(() => {
+    dispatch(itemsInCart())
+  })
+
+  return (
     <>
       <BrowserRouter>
         <Navbar />

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { controlCart } from "../store/Slices/cardSlice";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Checkout = () => {
     const [dropdown1, setDropdown1] = useState(false);
@@ -18,6 +19,14 @@ const Checkout = () => {
     const handleCart = () => {
         dispatch(controlCart())
     }
+
+    //Summary Details
+    const { cartItemsSubtotal, cartItemsQuantity } = useSelector((state) => state.card)
+    const shippingFee = 20;
+    const tax = 0.02;
+    const taxAmount = cartItemsSubtotal * tax;
+    const cartTotalAmount = cartItemsSubtotal + shippingFee + taxAmount
+
     return (
         <div className="overflow-y-hidden mt-5">
             <div className="flex justify-center items-center 2xl:container 2xl:mx-auto lg:py-16 md:py-12 py-9 px-4 md:px-6 lg:px-20 xl:px-44 ">
@@ -133,24 +142,24 @@ const Checkout = () => {
                         <div className="flex mt-7 flex-col items-end w-full space-y-6">
                             <div className="flex justify-between w-full items-center">
                                 <p className="text-lg leading-4 text-gray-600">Total items</p>
-                                <p className="text-lg font-semibold leading-4 text-gray-600">20</p>
+                                <p className="text-lg font-semibold leading-4 text-gray-600">{cartItemsQuantity}</p>
                             </div>
                             <div className="flex justify-between w-full items-center">
                                 <p className="text-lg leading-4 text-gray-600">Total Charges</p>
-                                <p className="text-lg font-semibold leading-4 text-gray-600">$2790</p>
+                                <p className="text-lg font-semibold leading-4 text-gray-600">${cartItemsSubtotal}</p>
                             </div>
                             <div className="flex justify-between w-full items-center">
                                 <p className="text-lg leading-4 text-gray-600">Shipping charges</p>
-                                <p className="text-lg font-semibold leading-4 text-gray-600">$90</p>
+                                <p className="text-lg font-semibold leading-4 text-gray-600">${shippingFee}</p>
                             </div>
                             <div className="flex justify-between w-full items-center">
-                                <p className="text-lg leading-4 text-gray-600">Sub total </p>
-                                <p className="text-lg font-semibold leading-4 text-gray-600">$3520</p>
+                                <p className="text-lg leading-4 text-gray-600">Tax</p>
+                                <p className="text-lg font-semibold leading-4 text-gray-600">${(taxAmount).toFixed(2)}</p>
                             </div>
                         </div>
                         <div className="flex justify-between w-full items-center mt-32">
                             <p className="text-xl font-semibold leading-4 text-gray-800">Estimated Total </p>
-                            <p className="text-lg font-semibold leading-4 text-gray-800">$2900</p>
+                            <p className="text-lg font-semibold leading-4 text-gray-800">${(cartTotalAmount).toFixed(2)}</p>
                         </div>
                     </div>
                 </div>

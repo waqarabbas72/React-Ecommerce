@@ -1,10 +1,10 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import logo from '../../images/logo.png'
 import { ShoppingBagIcon } from '@heroicons/react/20/solid'
-import { controlCart } from '../../store/Slices/cardSlice';
+import { controlCart, getTotal } from '../../store/Slices/cardSlice';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -13,14 +13,18 @@ function classNames(...classes) {
 }
 export default function Navbar() {
 
-  const cartItems = useSelector((state) => state.card.cartItemsQuantity)
+  const { card } = useSelector((state) => state)
   const dispatch = useDispatch()
 
   const handleCart = () => {
     dispatch(controlCart())
   }
 
-  
+  useEffect(() => {
+    dispatch(getTotal())
+  }, [card])
+
+
   return (
     <Disclosure as="nav" className="bg-white shadow fixed z-40 w-full mt-0 top-0">
       {({ open }) => (
@@ -79,13 +83,7 @@ export default function Navbar() {
                   <span className="sr-only">View Cart</span>
                   <div className='relative'>
                     <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" onClick={() => handleCart()} />
-                    {
-                      cartItems > 0 ? (
-                        <div className='h-4 w-4 border rounded-full text-xs text-center absolute -top-2 -right-2 z-10 bg-red-500 text-white'>{cartItems}</div>
-                      ) : (
-                        <></>
-                      )
-                    }
+                    <div className='h-4 w-4 border rounded-full text-xs text-center absolute -top-2 -right-2 z-10 bg-red-500 text-white'>{card.cartItemsQuantity}</div>
                   </div>
                 </button>
               </div>

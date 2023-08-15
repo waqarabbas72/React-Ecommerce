@@ -54,7 +54,7 @@ const ProductList = () => {
                                 }
                             </div>
 
-                            <div className='flex justify-center my-10'>
+                            <div className='flex justify-center my-10' onClick={() => window.scrollTo(0,0)}>
                                 <Link to={`/allProducts`} className='border py-2  px-4 text-center hover:bg-rose-800 hover:text-white duration-500'>Discover More</Link>
                             </div>
                         </div>

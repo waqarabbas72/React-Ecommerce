@@ -1,5 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
-import { useEffect } from "react";
+import { createSlice } from "@reduxjs/toolkit";
 
 
 
@@ -33,9 +32,8 @@ const cardSlice = createSlice({
             const existingItemIndex = state.cartData.findIndex(item => item.id === action.payload.id);
             if (existingItemIndex !== -1) {
                 state.cartData[existingItemIndex].quantity += 1;
-                state.cartData[existingItemIndex].subtotal = state.cartData[existingItemIndex].quantity * state.cartData[existingItemIndex].price; //Update Subtotal of Each Item
             } else {
-                state.cartData.push({ ...action.payload, quantity: 1, subtotal: action.payload.price });
+                state.cartData.push({ ...action.payload, quantity: 1, });
             }
             localStorage.setItem('cartData', JSON.stringify(state.cartData)) //UpDate Data in LocalStorage
         },
@@ -47,7 +45,6 @@ const cardSlice = createSlice({
             const itemsToIncrease = state.cartData.find(item => item.id === action.payload.id);
             if (itemsToIncrease) {
                 itemsToIncrease.quantity += 1;
-                itemsToIncrease.subtotal = itemsToIncrease.quantity * itemsToIncrease.price;//Update Subtotal of Each Item
                 localStorage.setItem('cartData', JSON.stringify(state.cartData)); //UpDate Data in LocalStorage
             }
         },
@@ -55,7 +52,6 @@ const cardSlice = createSlice({
             const itemsToDecrease = state.cartData.findIndex((item) => item.id === action.payload.id)
             if (state.cartData[itemsToDecrease].quantity > 1) {
                 state.cartData[itemsToDecrease].quantity -= 1
-                state.cartData[itemsToDecrease].subtotal = state.cartData[itemsToDecrease].quantity * state.cartData[itemsToDecrease].price; //Update Subtotal of Each Item
             } else if (state.cartData[itemsToDecrease].quantity === 1) {
                 const nextData = state.cartData.filter((item) => item.id !== action.payload.id)
                 state.cartData = nextData
@@ -64,20 +60,41 @@ const cardSlice = createSlice({
         },
         clearCart(state) {
             localStorage.removeItem('cartData')
+            localStorage.removeItem('cartItemsQuantity')
             state.cartData = []
+            state.cartItemsQuantity = 0
         },
         itemsInCart(state) {
             let cartQuantity = state.cartData.reduce((initialVal, currentVal) => {
                 const { quantity } = currentVal
                 return initialVal + quantity;
             }, 0)
-
-            state.cartItemsQuantity = cartQuantity
+            state.cartItemsQuantity = cartQuantity;
+            // Update the cartItemsQuantity in localStorage
+            localStorage.setItem("cartItemsQuantity", cartQuantity.toString());
         },
-        calculateCartSubtotal(state) {
-            state.cartItemsSubtotal = state.cartData.reduce((subtotal, item) => subtotal + item.subtotal, 0);
+        getTotal(state) {
+            const { price, itemQuantity } = state.cartData.reduce((totalItem, cartItems) => {
+                const { quantity } = cartItems;
+                const { price } = cartItems;
+                const itemTotal = price * quantity;
+                totalItem.price += itemTotal
+                totalItem.itemQuantity += quantity
 
-        }
+                return totalItem
+
+            }, {
+                price: 0,
+                itemQuantity: 0
+            })
+
+            state.cartItemsSubtotal = price
+            state.cartItemsQuantity = itemQuantity
+        },
+        // getCartQuantity(state) {
+        //     const cartQuantity = parseInt(localStorage.getItem('cartItemsQuantity')) || 0; //Get Data from Localstorage
+        //     state.cartItemsQuantity = cartQuantity
+        // }
     },
 })
 
@@ -92,7 +109,8 @@ export const {
     increaseItem,
     decreaseItem,
     itemsInCart,
-    calculateCartSubtotal
+    getTotal,
+    // getCartQuantity
 } = cardSlice.actions;
 
 export default cardSlice.reducer;
