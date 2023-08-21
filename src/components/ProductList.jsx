@@ -3,7 +3,7 @@ import Loader from './Loader'
 import { useGetProductListQuery } from '../clothingApi'
 import { Link } from 'react-router-dom'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
-import { addToCart, itemsInCart } from '../store/Slices/cardSlice'
+import { addToCart } from '../store/Slices/cardSlice'
 import { useDispatch } from 'react-redux'
 
 const ProductList = () => {
@@ -14,7 +14,6 @@ const ProductList = () => {
     
     const handleAdd = (itemsData) => {
         dispatch(addToCart(itemsData))
-        dispatch(itemsInCart())
     }
 
 

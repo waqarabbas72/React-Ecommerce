@@ -4,7 +4,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import logo from '../../images/logo.png'
 import { ShoppingBagIcon } from '@heroicons/react/20/solid'
-import { controlCart, getTotal } from '../../store/Slices/cardSlice';
+import { controlCart, getTotal, itemsInCart } from '../../store/Slices/cardSlice';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -13,7 +13,7 @@ function classNames(...classes) {
 }
 export default function Navbar() {
 
-  const { card } = useSelector((state) => state)
+  const shoppingCart = useSelector((state) => state.card)
   const dispatch = useDispatch()
 
   const handleCart = () => {
@@ -22,7 +22,7 @@ export default function Navbar() {
 
   useEffect(() => {
     dispatch(getTotal())
-  }, [card])
+  }, [shoppingCart])
 
 
   return (
@@ -83,7 +83,7 @@ export default function Navbar() {
                   <span className="sr-only">View Cart</span>
                   <div className='relative'>
                     <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" onClick={() => handleCart()} />
-                    <div className='h-4 w-4 border rounded-full text-xs text-center absolute -top-2 -right-2 z-10 bg-red-500 text-white'>{card.cartItemsQuantity}</div>
+                    <div className='h-4 w-4 border rounded-full text-xs text-center absolute -top-2 -right-2 z-10 bg-red-500 text-white'>{shoppingCart.cartItemsQuantity}</div>
                   </div>
                 </button>
               </div>

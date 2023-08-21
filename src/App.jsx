@@ -13,11 +13,12 @@ import { useDispatch } from 'react-redux';
 import { itemsInCart } from './store/Slices/cardSlice';
 
 const App = () => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(itemsInCart())
-  })
+  // useEffect(() => {
+  //   dispatch(itemsInCart());
+    
+  // }, [])
 
   return (
     <>

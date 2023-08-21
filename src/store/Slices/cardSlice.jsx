@@ -9,7 +9,7 @@ const cardSlice = createSlice({
         showCart: false,
         productQuickview: false,
         productId: '',
-        cartData: [],
+        cartData: JSON.parse(localStorage.getItem('cartData')) || [],
         cartItemsQuantity: 0,
         cartItemsSubtotal: 0
     },
@@ -19,8 +19,6 @@ const cardSlice = createSlice({
         },
         controlCart(state) {
             state.showCart = !state.showCart
-            const initialCartData = JSON.parse(localStorage.getItem('cartData')) || []; //Get Data from Localstorage
-            state.cartData = initialCartData
         },
         quickView(state) {
             state.productQuickview = !state.productQuickview
@@ -91,10 +89,7 @@ const cardSlice = createSlice({
             state.cartItemsSubtotal = price
             state.cartItemsQuantity = itemQuantity
         },
-        // getCartQuantity(state) {
-        //     const cartQuantity = parseInt(localStorage.getItem('cartItemsQuantity')) || 0; //Get Data from Localstorage
-        //     state.cartItemsQuantity = cartQuantity
-        // }
+     
     },
 })
 
@@ -110,7 +105,7 @@ export const {
     decreaseItem,
     itemsInCart,
     getTotal,
-    // getCartQuantity
+    getCartQuantity
 } = cardSlice.actions;
 
 export default cardSlice.reducer;

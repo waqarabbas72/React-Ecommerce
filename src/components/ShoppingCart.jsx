@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { controlCart, removeItem, clearCart, decreaseItem, addToCart, increaseItem, getTotal } from "../store/Slices/cardSlice";
+import { controlCart, removeItem, clearCart, decreaseItem, addToCart, increaseItem, getTotal, itemsInCart } from "../store/Slices/cardSlice";
 import { XMarkIcon, StarIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import findGif from '../images/cart.gif'
@@ -15,7 +15,13 @@ function ShoppingCart() {
 
     const handleCart = () => {
         dispatch(controlCart())
+        window.scrollTo(0, 0)
     }
+
+    useEffect(() => {
+        dispatch(itemsInCart());
+
+    }, [dispatch])
 
 
     const cartSubtotal = useSelector((state) => state.card.cartItemsSubtotal)
@@ -33,7 +39,7 @@ function ShoppingCart() {
                             <div className="lg:w-1/2 w-full  px-5 md:pr-4 py-8 bg-white overflow-hidden h-screen" id="scroll">
                                 <div className="flex items-center justify-between px-2 w-full z-10 mb-2 border-b-2 py-3 bg-gray-300">
                                     <div className="text-gray-500 hover:text-red-600 cursor-pointer" onClick={() => handleCart()}>
-                                        <XMarkIcon className="h-8 mr-4" />
+                                        <XMarkIcon className="h-8" />
                                     </div>
                                     <p className="text-3xl font-black leading-10 text-gray-800">Shopping Cart</p>
                                     <div>
