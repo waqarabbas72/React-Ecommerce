@@ -47,7 +47,7 @@ function ShoppingCart() {
                                             <button className="text-red-500 cursor-pointer p-1 underline" onClick={() => dispatch(clearCart())}>Clear Cart</button>
                                         ) : (
                                             <></>
-                                        )
+                                        ) 
                                         }
                                     </div>
 

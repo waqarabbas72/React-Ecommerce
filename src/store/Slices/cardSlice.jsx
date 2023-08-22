@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { toast } from "react-toastify";
 
 
 const cardSlice = createSlice({
@@ -30,14 +30,17 @@ const cardSlice = createSlice({
             const existingItemIndex = state.cartData.findIndex(item => item.id === action.payload.id);
             if (existingItemIndex !== -1) {
                 state.cartData[existingItemIndex].quantity += 1;
+                toast.info('Increased Item Quantity!');
             } else {
                 state.cartData.push({ ...action.payload, quantity: 1, });
+                toast.success('Item Added Successfully!');
             }
             localStorage.setItem('cartData', JSON.stringify(state.cartData)) //UpDate Data in LocalStorage
         },
         removeItem(state, action) {
             state.cartData = state.cartData.filter(item => item.id !== action.payload);
             localStorage.setItem('cartData', JSON.stringify(state.cartData));  //UpDate Data in LocalStorage
+            toast.error('Item Removed Successfully!');
         },
         increaseItem(state, action) {
             const itemsToIncrease = state.cartData.find(item => item.id === action.payload.id);
@@ -89,7 +92,7 @@ const cardSlice = createSlice({
             state.cartItemsSubtotal = price
             state.cartItemsQuantity = itemQuantity
         },
-     
+
     },
 })
 

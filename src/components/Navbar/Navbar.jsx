@@ -7,6 +7,7 @@ import { ShoppingBagIcon } from '@heroicons/react/20/solid'
 import { controlCart, getTotal, itemsInCart } from '../../store/Slices/cardSlice';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import Logo from './Logo'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -33,11 +34,7 @@ export default function Navbar() {
             <div className="flex h-16 justify-between">
               <div className="flex px-2 lg:px-0">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-8 w-auto"
-                    src={logo}
-                    alt="Your Company"
-                  />
+                 <Logo />
                 </div>
                 <div className="hidden lg:ml-20 lg:flex lg:space-x-8">
                   <Link to={`/`} className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900">

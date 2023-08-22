@@ -9,20 +9,26 @@ import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 import ShoppingCart from './components/ShoppingCart';
 import Checkout from './pages/Checkout';
-import { useDispatch } from 'react-redux';
-import { itemsInCart } from './store/Slices/cardSlice';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const App = () => {
-  // const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch(itemsInCart());
-    
-  // }, [])
 
   return (
     <>
       <BrowserRouter>
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          draggable
+          theme="light"
+          className='mt-13'
+        />
         <Navbar />
         <Routes>
           <Route exact path='/' element={<Home />} />

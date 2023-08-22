@@ -4,6 +4,8 @@ import { quickView, addToCart } from "../store/Slices/cardSlice";
 import { useDispatch } from "react-redux";
 import { StarIcon } from "@heroicons/react/24/outline";
 import { useGetProductDetailQuery } from "../clothingApi";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const QuickView = () => {
@@ -26,6 +28,16 @@ const QuickView = () => {
     const handleDispatch = (itemData) => {
         dispatch(addToCart(itemData))
     }
+    // const notify = () => toast.success('Item Added Successfully!', {
+    //     position: "top-right",
+    //     autoClose: 2000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    // });
+
     return (
         <>
             {
@@ -88,9 +100,8 @@ const QuickView = () => {
                                         </div>
                                         <p className=" mt-4 font-normal text-sm leading-3 text-gray-500 hover:text-gray-600 duration-100 underline cursor-pointer">Find the perfect size?</p>
 
-                                        <div className="flex flex-col w-full space-y-4 mt-10">
+                                        <div className="mt-10">
                                             <button className="border border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 md:w-96 w-full hover:bg-black text-base font-medium leading-4 bg-gray-800 py-4 text-white" onClick={() => handleDispatch(data)}>Add to Cart</button>
-                                            <button className="border border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 md:w-96 w-full hover:bg-gray-300 text-base font-medium leading-4 text-gray-800 py-4 bg-white">Buy Now</button>
                                         </div>
                                     </div>
                                     <button onClick={() => dispatch(quickView())} aria-label="show Menu" className="absolute top-4 right-4  md:top-6 md:right-6 focus:outline-none focus:ring-2  focus:ring-gray-800">

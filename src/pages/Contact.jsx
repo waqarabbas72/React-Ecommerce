@@ -1,5 +1,22 @@
-import React from "react";
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-toastify'
+
 export default function Contact() {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_5btsleg', 'template_oi2yyx9', form.current, 'IkDLR2ZSuoY6dTJyX')
+      .then((result) => {
+        console.log(result.text);
+        toast.success('Sent Successfully!')
+      }, (error) => {
+        console.log(error.text);
+        toast.error("Message Can't be Sent!")
+      });
+  };
   return (
     <>
       <div className="py-4 lg:py-8  relative mt-20">
@@ -35,21 +52,24 @@ export default function Contact() {
                 <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-wider text-indigo-700">Let’s Talk</h1>
                 <div className="w-full 2xl:w-8/12 mt-3">
                   <h2 className="text-gray-800 text-base md:text-lg leading-8 tracking-wider">For enquiries, please email us using the form below</h2>
-                  <div className="mt-4 md:mt-8">
-                    <p className="text-gray-800 text-base font-medium">Name</p>
-                    <input className="mt-3 text-base border-2 w-11/12 lg:w-full xl:w-10/12 hover:border-indigo-600 focus:border-indigo-600 focus:outline-none border-black py-5 pl-4 text-gray-800" type="text" placeholder="Justin Timberlake" />
-                  </div>
-                  <div className="mt-4 md:mt-8">
-                    <p className="text-gray-800 text-base font-medium">Email Address</p>
-                    <input className="mt-3 text-base border-2 w-11/12 lg:w-full xl:w-10/12 hover:border-indigo-600 focus:border-indigo-600 focus:outline-none border-black py-5 pl-4 text-gray-800" type="email" placeholder="example@mail.com" />
-                  </div>
-                  <div className="mt-4 md:mt-8">
-                    <p className="text-gray-800 text-base font-medium">Message</p>
-                    <textarea className="mt-3 text-base border-2 w-11/12 lg:w-full xl:w-10/12 resize-none hover:border-indigo-600 focus:border-indigo-600 focus:outline-none border-black xl:h-40 py-5 pl-4 text-gray-800" type="text" placeholder="Write us something..." defaultValue={""} />
-                  </div>
-                  <div className="py-5">
-                    <button className="py-3 md:py-5 px-5 md:px-10 bg-gray-900 text-white hover:opacity-90 ease-in duration-150 text-sm md:text-lg tracking-wider font-semibold">Send</button>
-                  </div>
+                  <form ref={form} onSubmit={sendEmail}>
+                    <div className="mt-4 md:mt-8">
+                      <p className="text-gray-800 text-base font-medium">Name</p>
+                      <input className="mt-3 text-base border-2 w-11/12 lg:w-full xl:w-10/12 hover:border-indigo-600 focus:border-indigo-600 focus:outline-none border-black py-5 pl-4 text-gray-800" type="text" placeholder="Justin Timberlake" name="user_name" />
+                    </div>
+                    <div className="mt-4 md:mt-8">
+                      <p className="text-gray-800 text-base font-medium">Email Address</p>
+                      <input className="mt-3 text-base border-2 w-11/12 lg:w-full xl:w-10/12 hover:border-indigo-600 focus:border-indigo-600 focus:outline-none border-black py-5 pl-4 text-gray-800" type="email" placeholder="example@mail.com" name="user_email" />
+                    </div>
+                    <div className="mt-4 md:mt-8">
+                      <p className="text-gray-800 text-base font-medium">Message</p>
+                      <textarea className="mt-3 text-base border-2 w-11/12 lg:w-full xl:w-10/12 resize-none hover:border-indigo-600 focus:border-indigo-600 focus:outline-none border-black xl:h-40 py-5 pl-4 text-gray-800" type="text" placeholder="Write us something..." defaultValue={""} name="message" />
+                    </div>
+                    <div className="py-5">
+                      {/* <button className="py-3 md:py-5 px-5 md:px-10 bg-gray-900 text-white hover:opacity-90 ease-in duration-150 text-sm md:text-lg tracking-wider font-semibold">Send</button> */}
+                      <input type="submit" value="Send" className="py-3 md:py-5 px-5 md:px-10 bg-gray-900 text-white hover:opacity-90 ease-in duration-150 text-sm md:text-lg tracking-wider font-semibold cursor-pointer" />
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>

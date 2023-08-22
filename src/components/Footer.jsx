@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../images/logo.png'
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedin, FaMailBulk, FaLocationArrow } from 'react-icons/fa'
+import Logo from './Navbar/Logo';
 
 
 const btns = [
@@ -32,13 +33,13 @@ const list2 = [
 ];
 
 const Footer = () => {
-  
+
   return (
-    <>
-      <div className='grid grid-cols-1 sm:grid-cols-2 gap-8 lg:grid-cols-4 mx-auto max-w-2xl p-4  sm:px-6  lg:max-w-7xl lg:px-8 mt-20 border-b-2 mb-5'>
+    <div className='bg-gray-200'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-8 lg:grid-cols-4 mx-auto max-w-2xl p-4 pt-10 sm:px-6  lg:max-w-7xl lg:px-8 mt-20 border-b-2 mb-5'>
         <div className='flex flex-col gap-4'>
           <div>
-            <img src={logo} alt="" className="h-8 w-auto" />
+           <Logo />
           </div>
           <div>
             <p className='text-lg'>We are a team of designers and developers that create high quality WordPress</p>
@@ -101,7 +102,7 @@ const Footer = () => {
           }
         </div>
       </div>
-    </>
+    </div>
   )
 };
 
