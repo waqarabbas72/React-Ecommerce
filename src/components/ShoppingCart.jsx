@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { controlCart, removeItem, clearCart, decreaseItem, addToCart, increaseItem, getTotal, itemsInCart } from "../store/Slices/cardSlice";
 import { XMarkIcon, StarIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import findGif from '../images/cart.gif'
+import emptyCart from '../images/emptyCart.avif'
 import { Link } from "react-router-dom";
 
 
@@ -47,7 +47,7 @@ function ShoppingCart() {
                                             <button className="text-red-500 cursor-pointer p-1 underline" onClick={() => dispatch(clearCart())}>Clear Cart</button>
                                         ) : (
                                             <></>
-                                        ) 
+                                        )
                                         }
                                     </div>
 
@@ -81,9 +81,8 @@ function ShoppingCart() {
                                         ))) : (
                                             <div className="mt-5 py-8 border-t border-gray-200 flex flex-col items-center gap-4 text-lg">
                                                 <p>OOPS! Looks Like Your Cart Is Empty. </p>
-                                                <img src={findGif} alt="" className="h-60" />
-
-                                                <div className="flex items-center underline text-red-500 cursor-pointer " onClick={() => dispatch(controlCart())}>Goto Shop <ShoppingCartIcon className="h-8" /></div>
+                                                <img src={emptyCart} alt="" className="h-60" />
+                                                <Link to={`/`} onClick={() => dispatch(controlCart())} className="flex items-center mx-4 h-10 w-auto p-2 border rounded-md text-white text-base bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:ring-indigo-800">Go Back To Shop  <ShoppingCartIcon className="h-8 mx-1" /></Link>
 
 
                                             </div>

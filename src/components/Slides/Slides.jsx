@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import 'swiper/css/scrollbar';
-import { Keyboard, Mousewheel, Scrollbar } from "swiper/modules";
+import { Keyboard, Mousewheel } from "swiper/modules";
 import Loader from "../Loader";
 import { useGetProductListQuery } from "../../clothingApi";
 import { StarIcon } from "@heroicons/react/24/outline";
@@ -19,7 +18,7 @@ const Slides = () => {
     const handleClick = (id) => {
         dispatch(fetchProductId(id))
         dispatch(quickView())
-    }
+    } 
 
 
     return (
