@@ -26,7 +26,7 @@ const App = () => {
           closeOnClick
           rtl={false}
           draggable
-          theme="light"
+          theme="dark"
           className='mt-13'
         />
         <Navbar />

@@ -83,8 +83,6 @@ function ShoppingCart() {
                                                 <p>OOPS! Looks Like Your Cart Is Empty. </p>
                                                 <img src={emptyCart} alt="" className="h-60" />
                                                 <Link to={`/`} onClick={() => dispatch(controlCart())} className="flex items-center mx-4 h-10 w-auto p-2 border rounded-md text-white text-base bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:ring-indigo-800">Go Back To Shop  <ShoppingCartIcon className="h-8 mx-1" /></Link>
-
-
                                             </div>
                                         )
 
