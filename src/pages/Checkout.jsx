@@ -7,6 +7,7 @@ import EmptyCart from "./EmptyCart";
 import { useFormik } from "formik";
 import { CheckoutSchemas } from "../schemas";
 import { toast } from 'react-toastify'
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
     const [dropdown, setDropdown] = useState(false);
@@ -29,7 +30,7 @@ const Checkout = () => {
     const taxAmount = cartItemsSubtotal * tax;
     const cartTotalAmount = cartItemsSubtotal + shippingFee + taxAmount
 
-    // Formik 
+    // Form validation With Formik and Yup
     const initialValues = {
         name: '',
         email: '',
@@ -41,7 +42,7 @@ const Checkout = () => {
         card_number: '',
         cvc: ''
     }
-
+    const navigate = useNavigate()
     const { values, handleBlur, handleChange, handleSubmit, errors, touched } = useFormik({
         initialValues: initialValues,
         validationSchema: CheckoutSchemas,
@@ -49,6 +50,7 @@ const Checkout = () => {
             console.log(values);
             action.resetForm()
             toast.success('Submitted Successfully!')
+            navigate('/continueShopping')
         },
     });
 
@@ -213,11 +215,13 @@ const Checkout = () => {
                                         </div>
                                     </div>
                                 </div>
+
                                 <input
                                     type="submit"
                                     className="focus:outline-none focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-focus:ring-gray-800 leading-4 hover:bg-black py-3 w-full md:w-4/12 lg:w-full text-white bg-gray-800 cursor-pointer"
-                                    value='Place Order'
-                                />
+                                    value='Place Order' />
+
+
                             </form>
                             <div className="flex flex-col justify-start items-start bg-gray-50 w-full p-6 md:p-14">
                                 <div>

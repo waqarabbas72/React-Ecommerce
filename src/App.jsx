@@ -11,6 +11,7 @@ import ShoppingCart from './components/ShoppingCart';
 import Checkout from './pages/Checkout';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ContinueShopping from './pages/ContinueShopping';
 
 
 const App = () => {
@@ -26,7 +27,7 @@ const App = () => {
           closeOnClick
           rtl={false}
           draggable
-          theme="dark"
+          theme="light"
           className='mt-13'
         />
         <Navbar />
@@ -37,6 +38,7 @@ const App = () => {
           <Route path='/blog' element={<Blog />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/checkout' element={<Checkout />} />
+          <Route path='/continueShopping' element={<ContinueShopping />} />
         </Routes>
         <ShoppingCart />
         <Footer />

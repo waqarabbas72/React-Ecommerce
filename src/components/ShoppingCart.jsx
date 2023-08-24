@@ -64,8 +64,8 @@ function ShoppingCart() {
                                                 <div className="md:pl-3 md:w-3/4">
                                                     <p className="text-base font-black leading-none text-rose-800 mb-3">{item.title}</p>
                                                     <p className="text-sm text-gray-600 md:pt-0 pt-2">Category : {item.category}</p>
-                                                    <p className="text-sm text-gray-600 my-1">Reviews : {item.rating.count}</p>
-                                                    <p className="text-sm text-gray-600 flex items-center">Ratings : <StarIcon className="h-4 mx-1" /> {item.rating.rate}</p>
+                                                    <p className="text-sm text-gray-600 my-1">Reviews : {item.rating?.count}</p>
+                                                    <p className="text-sm text-gray-600 flex items-center">Ratings : <StarIcon className="h-4 mx-1" /> {item.rating?.rate}</p>
                                                     <p className="text-sm text-gray-600 my-1">Price : ${item.price}</p>
                                                     <div className="flex items-center justify-between pt-5 pr-6">
                                                         <p className="text-sm underline text-red-500 cursor-pointer" onClick={() => dispatch(removeItem(item.id))}>Remove</p>
