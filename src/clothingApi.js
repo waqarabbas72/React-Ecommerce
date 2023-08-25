@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseUrl = "https://fakestoreapi.com";
 
-
+ 
 const createRequest = (url ) => ({
   url,
   // params: { ...params }, // Spread the params object to include any additional parameters

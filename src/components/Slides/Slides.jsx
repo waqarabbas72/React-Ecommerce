@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Keyboard, Mousewheel } from "swiper/modules";
+import { Keyboard, Mousewheel, Scrollbar } from "swiper/modules";
 import Loader from "../Loader";
 import { useGetProductListQuery } from "../../clothingApi";
 import { StarIcon } from "@heroicons/react/24/outline";
@@ -8,6 +8,8 @@ import { quickView, fetchProductId, addToCart } from "../../store/Slices/cardSli
 import { useDispatch } from "react-redux";
 import QuickView from "../QuickView";
 import { Link } from "react-router-dom";
+
+import 'swiper/css/scrollbar';
 
 
 const Slides = () => {
@@ -18,7 +20,7 @@ const Slides = () => {
     const handleClick = (id) => {
         dispatch(fetchProductId(id))
         dispatch(quickView())
-    } 
+    }
 
 
     return (
@@ -37,12 +39,13 @@ const Slides = () => {
                             <Swiper
                                 scrollbar={{
                                     hide: true,
+                                    draggable: true
                                 }}
                                 cssMode={true}
                                 mousewheel={true}
                                 keyboard={true}
                                 freeMode={true}
-                                modules={[Mousewheel, Keyboard]}
+                                modules={[Mousewheel, Keyboard, Scrollbar]}
                                 breakpoints={{
                                     0: {
                                         slidesPerView: 1,

@@ -34,7 +34,7 @@ export default function Navbar() {
             <div className="flex h-16 justify-between">
               <div className="flex px-2 lg:px-0">
                 <div className="flex flex-shrink-0 items-center">
-                 <Logo />
+                  <Link to={`/`} onClick={()=> window.scrollTo(0,0)}> <Logo /></Link>
                 </div>
                 <div className="hidden lg:ml-20 lg:flex lg:space-x-8">
                   <Link to={`/`} className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900">
