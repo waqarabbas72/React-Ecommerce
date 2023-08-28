@@ -4,6 +4,7 @@ import image from '../images/continueShopping.png'
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 const ContinueShopping = () => {
+
     return (
         <div className="h-screen mt-10">
             <div className="flex items-center justify-center py-12">

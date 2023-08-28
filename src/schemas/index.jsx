@@ -20,12 +20,18 @@ export const CheckoutSchemas = Yup.object({
     }).required('Please enter your phone number!'),
     card_holder: Yup.string().min(2).max(25).required('Please enter card_holder!'),
     expiry_date: Yup.date().required('Please enter expiry date!'),
-    card_number: Yup.number().test('length', 'Card Number must be 12 to 20 digits', (value) => {
+    card_number: Yup.number().test('length', 'Card Number must be 16 digits', (value) => {
         if (value) {
             const stringValue = String(value);
-            return stringValue.length >= 12 && stringValue.length <= 20;
+            return stringValue.length === 16;
         }
         return true
     }).required('Please a valid card number!'),
-    cvc: Yup.string().min(5).max(10).required('Please enter your cvc!')
+    cvc: Yup.number().test('length', 'CVC must be 3 to 4 digits', (value) => {
+        if (value) {
+            const stringValue = String(value);
+            return stringValue.length >= 3 && stringValue.length <= 4;
+        }
+        return true
+    }).required('Please a valid card number!'),
 })

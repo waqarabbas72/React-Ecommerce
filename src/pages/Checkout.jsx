@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { controlCart } from "../store/Slices/cardSlice";
+import { controlCart, clearCart } from "../store/Slices/cardSlice";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import EmptyCart from "./EmptyCart";
@@ -42,6 +42,9 @@ const Checkout = () => {
         card_number: '',
         cvc: ''
     }
+
+
+
     const navigate = useNavigate()
     const { values, handleBlur, handleChange, handleSubmit, errors, touched } = useFormik({
         initialValues: initialValues,
@@ -51,9 +54,16 @@ const Checkout = () => {
             action.resetForm()
             toast.success('Submitted Successfully!')
             navigate('/continueShopping')
+            dispatch(clearCart())
         },
     });
 
+
+    // useEffect(() => {
+    //     localStorage.removeItem('cartData')    
+    //     // localStorage.getItem('cartData')
+
+    // }, [cartItemsQuantity])
 
     return (
         <>
@@ -191,7 +201,7 @@ const Checkout = () => {
                                                 id="cardNumber"
                                                 className="focus:outline-none focus:ring-2 focus:ring-gray-500 px-2 border-gray-200 leading-4 text-base placeholder-gray-600  w-full"
                                                 type="number"
-                                                placeholder="Card Number"
+                                                placeholder="xxxx-xxxx-xxxx-xxxx"
                                                 name="card_number"
                                                 value={values.card_number}
                                                 onChange={handleChange}
@@ -205,7 +215,7 @@ const Checkout = () => {
                                                 id="email"
                                                 className="focus:outline-none focus:ring-2 focus:ring-gray-500 px-2 border-gray-200 leading-4 text-base placeholder-gray-600 w-full"
                                                 placeholder="CVC"
-                                                type="text"
+                                                type="number"
                                                 name="cvc"
                                                 value={values.cvc}
                                                 onChange={handleChange}
