@@ -6,12 +6,14 @@ import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import emptyCart from '../images/emptyCart.avif'
 import { Link } from "react-router-dom";
 
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 function ShoppingCart() {
     const dispatch = useDispatch()
     const showBag = useSelector((state) => state.card.showCart)
     const addToCart = useSelector((state) => state.card.cartData)
+    const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
 
     const handleCart = () => {
         dispatch(controlCart())
@@ -22,6 +24,7 @@ function ShoppingCart() {
         dispatch(itemsInCart());
 
     }, [dispatch])
+
 
 
     const cartSubtotal = useSelector((state) => state.card.cartItemsSubtotal)
@@ -114,9 +117,17 @@ function ShoppingCart() {
                                                         <p className="text-2xl leading-normal text-gray-800">Total</p>
                                                         <p className="text-2xl font-bold leading-normal text-right text-gray-800">${(cartTotalAmount).toFixed(2)}</p>
                                                     </div>
-                                                    <Link to={`/checkout`} onClick={() => handleCart()} className="w-full px-5 py-3 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
-                                                        Checkout
-                                                    </Link>
+
+                                                    {isAuthenticated ? (
+                                                        <Link to={`/checkout`} onClick={() => handleCart()} className="w-full px-5 py-3 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
+                                                            Checkout
+                                                        </Link>) : (
+                                                        <>
+                                                            <p className="text-xs p-1 text-center text-red-600">Please Login first to Continue</p>
+                                                            <button className="w-full px-5 py-3 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white" onClick={() => loginWithRedirect()}>Login</button>
+                                                        </>
+                                                    )
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
