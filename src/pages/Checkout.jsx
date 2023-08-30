@@ -228,7 +228,8 @@ const Checkout = () => {
                                         <input
                                             type="submit"
                                             className="focus:outline-none focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-focus:ring-gray-800 leading-4 hover:bg-black py-3 w-full md:w-4/12 lg:w-full text-white bg-gray-800 cursor-pointer"
-                                            value='Place Order' />
+                                            value='Place Order'
+                                            onClick={() => window.scrollTo(0,0)} />
 
 
                                     </form>
