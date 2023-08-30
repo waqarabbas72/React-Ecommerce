@@ -38,7 +38,7 @@ const ProductList = () => {
                                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-7">
                                                 <img
                                                     src={product.image}
-                                                    className="h-72 w-72 object-center group-hover:opacity-75 hover:rotate-12 hover:scale-125 transition-all duration-500 mx-auto "
+                                                    className="h-72 w-72 object-center group-hover:opacity-75  transition-all duration-500 mx-auto "
                                                 />
                                             </div>
                                             <div>
