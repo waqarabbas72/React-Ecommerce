@@ -67,23 +67,20 @@ const QuickView = () => {
                                                 <p className="font-semibold text-base leading-4 text-gray-800">Size</p>
                                                 <p className="cursor-pointer hover:text-gray-800 font-medium text-base leading-4 text-gray-500 underline">Size guide</p>
                                             </div>
-                                            <div className=" grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-4 sm:justify-between lg:justify-start mt-4">
-                                                <div onClick={() => getSize("XSS")} id="XSS" className={"font-medium text-base text-gray-800 border py-1 w-16 text-center cursor-pointer " + (size === "XSS" ? "border-gray-500" : "border-gray-200")}>
-                                                    XXS
-                                                </div>
-                                                <div onClick={() => getSize("XS")} id="XS" className={"font-medium text-base text-gray-800 border  py-1 w-16 text-center cursor-pointer " + (size === "XS" ? "border-gray-500" : "border-gray-200")}>
+                                            <div className=" grid grid-cols-5 gap-2 sm:flex sm:flex-wrap sm:gap-4 sm:justify-between lg:justify-start mt-4">
+                                                <div onClick={() => getSize("XS")} id="XS" className={"font-medium text-xs sm:text-base text-gray-800 border  py-1 w-12 sm:w-16 text-center cursor-pointer " + (size === "XS" ? "border-gray-500" : "border-gray-200")}>
                                                     XS
                                                 </div>
-                                                <div onClick={() => getSize("S")} id="S" className={"font-medium text-base text-gray-800 border py-1 w-16 text-center cursor-pointer " + (size === "S" ? "border-gray-500" : "border-gray-200")}>
+                                                <div onClick={() => getSize("S")} id="S" className={"font-medium text-xs sm:text-base text-gray-800 border py-1 w-12 sm:w-16 text-center cursor-pointer " + (size === "S" ? "border-gray-500" : "border-gray-200")}>
                                                     S
                                                 </div>
-                                                <div onClick={() => getSize("M")} id="M" className={"font-medium text-base text-gray-800 border py-1 w-16 text-center cursor-pointer " + (size === "M" ? "border-gray-500" : "border-gray-200")}>
+                                                <div onClick={() => getSize("M")} id="M" className={"font-medium text-xs sm:text-base text-gray-800 border py-1 w-12 sm:w-16 text-center cursor-pointer " + (size === "M" ? "border-gray-500" : "border-gray-200")}>
                                                     M
                                                 </div>
-                                                <div onClick={() => getSize("L")} id="L" className={"font-medium text-base text-gray-800 border py-1 w-16 text-center cursor-pointer " + (size === "L" ? "border-gray-500" : "border-gray-200")}>
+                                                <div onClick={() => getSize("L")} id="L" className={"font-medium text-xs sm:text-base text-gray-800 border py-1 w-12 sm:w-16 text-center cursor-pointer " + (size === "L" ? "border-gray-500" : "border-gray-200")}>
                                                     L
                                                 </div>
-                                                <div onClick={() => getSize("XL")} id="XL" className={"font-medium text-basetext-gray-800 border py-1 w-16 text-center cursor-pointer " + (size === "XL" ? "border-gray-500" : "border-gray-200")}>
+                                                <div onClick={() => getSize("XL")} id="XL" className={"font-medium text-xs sm:text-base text-gray-800 border py-1 w-12 sm:w-16 text-center cursor-pointer " + (size === "XL" ? "border-gray-500" : "border-gray-200")}>
                                                     XL
                                                 </div>
                                             </div>

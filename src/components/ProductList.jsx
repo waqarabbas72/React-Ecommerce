@@ -41,8 +41,8 @@ const ProductList = () => {
                                                     className="h-32 w-32 sm:w-72 sm:h-72 object-center group-hover:opacity-75  transition-all duration-500 mx-auto "
                                                 />
                                             </div>
-                                           <div>
-                                                <h3 className="mt-4 text-xs sm:text-sm text-gray-700">{product.title}</h3>
+                                            <div>
+                                                <h3 className="mt-4 text-xs sm:text-sm text-gray-700" >{product.title}</h3>
                                                 <div className='flex justify-between items-center my-2'>
                                                     <p className="mt-1 text-sm sm:text-lg font-medium text-gray-900">${product.price}</p>
                                                     <ShoppingCartIcon className='h-5 sm:h-8 text-red-500 cursor-pointer' onClick={() => handleAdd(product)} />
