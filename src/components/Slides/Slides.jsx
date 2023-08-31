@@ -48,9 +48,6 @@ const Slides = () => {
                                 modules={[Mousewheel, Keyboard, Scrollbar]}
                                 breakpoints={{
                                     0: {
-                                        slidesPerView: 1,
-                                    },
-                                    500: {
                                         slidesPerView: 2,
                                     },
                                     639: {
@@ -73,23 +70,23 @@ const Slides = () => {
                                             <div className=" relative mb-10">
                                                 <div className=" relative group">
                                                     <div className=" flex justify-center items-center opacity-0 bg-gradient-to-t from-gray-800 via-gray-800 to-opacity-30 group-hover:opacity-50 absolute top-0 left-0 h-full w-full"></div>
-                                                    <img className=" w-60 h-72 object-center mx-auto" src={item.image} alt="A girl Posing Img" />
+                                                    <img className="w-32 h-44 sm:w-60 sm:h-72 object-center mx-auto" src={item.image} alt="A girl Posing Img" />
                                                     <div className=" absolute bottom-0 p-8 w-full opacity-0 group-hover:opacity-100">
-                                                        <button className=" font-medium text-base leading-4 text-gray-800 bg-white py-3 w-full" onClick={() => dispatch(addToCart(item))}>Add to Cart</button>
+                                                        <button className=" font-medium text-xs sm:text-sm leading-4 text-gray-800 bg-white py-1 sm:py-3 w-full" onClick={() => dispatch(addToCart(item))}>Add to Cart</button>
                                                         <Link>
-                                                            <button className=" bg-transparent font-medium text-base leading-4 border-2 border-white py-3 w-full mt-2 text-white" onClick={() => handleClick(item.id)}>Quick View</button>
+                                                            <button className=" bg-transparent font-medium text-xs sm:text-sm leading-4 border-2 border-white py-1 sm:py-3 w-full mt-2 text-white" onClick={() => handleClick(item.id)}>Quick View</button>
                                                         </Link>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-baseline justify-between px-2 shadow-md">
-                                                    <p className=" font-semibold text-xl  text-gray-800 mt-4">${item.price}</p>
+                                                    <p className=" font-semibold text-sm sm:text-xl  text-gray-800 mt-4">${item.price}</p>
 
                                                     <div className="flex items-center justify-center">
                                                         <StarIcon width={20} className="text-yellow-600" />
-                                                        <p className="text-lg text-yellow-600 my-2 ">{item.rating.rate}</p>
+                                                        <p className="text-sm sm:text-lg text-yellow-600 my-2 ">{item.rating.rate}</p>
                                                     </div>
                                                 </div>
-                                                <p className="text-sm text-gray-700 my-3">{item.title}</p>
+                                                <p className="text-xs sm:text-sm text-gray-700 my-3">{item.title}</p>
                                             </div>
                                         </SwiperSlide>
                                     )

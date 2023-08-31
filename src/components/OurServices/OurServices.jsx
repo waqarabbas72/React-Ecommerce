@@ -17,7 +17,7 @@ const OurServices = () => {
 
         <div className='mx-5'>
             <div className="text-center mt-10 lg:mt-24 mb-7">
-                <p className="text-rose-800  text-5xl">Our Awesome Services</p>
+                <p className="text-rose-800 text-2xl sm:text-5xl">Our Awesome Services</p>
             </div>
 
             <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mx-auto max-w-2xl p-6 pb-16  sm:px-6  lg:max-w-7xl lg:px-8 border my-4'>

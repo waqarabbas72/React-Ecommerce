@@ -38,16 +38,16 @@ function ShoppingCart() {
             {showBag && (
                 <div className="w-full h-full bg-black z-30 mt-16 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0" id="chec-div">
                     <div className="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700" id="checkout">
-                        <div className="flex md:flex-row flex-col justify-end" id="cart">
-                            <div className="lg:w-1/2 w-full  px-5 md:pr-4 py-8 bg-white overflow-hidden h-screen" id="scroll">
+                        <div className="flex lg:flex-row flex-col justify-end" id="cart">
+                            <div className="lg:w-1/2 w-full  px-0 md:pr-4 py-8 bg-white overflow-hidden h-screen" id="scroll">
                                 <div className="flex items-center justify-between px-2 w-full z-10 mb-2 border-b-2 py-3 bg-gray-300">
                                     <div className="text-gray-500 hover:text-red-600 cursor-pointer" onClick={() => handleCart()}>
                                         <XMarkIcon className="h-8" />
                                     </div>
-                                    <p className="text-3xl font-black leading-10 text-gray-800">Shopping Cart</p>
+                                    <p className="text-xl sm:text-3xl font-black leading-10 text-gray-800">Shopping Cart</p>
                                     <div>
                                         {addToCart.length > 0 ? (
-                                            <button className="text-red-500 cursor-pointer p-1 underline" onClick={() => dispatch(clearCart())}>Clear Cart</button>
+                                            <button className="text-red-500 text-xs sm:text-sm cursor-pointer p-1 underline" onClick={() => dispatch(clearCart())}>Clear Cart</button>
                                         ) : (
                                             <></>
                                         )
@@ -60,9 +60,9 @@ function ShoppingCart() {
                                     {
 
                                         addToCart.length > 0 ? (addToCart?.map((item, i) => (
-                                            <div className="sm:flex  items-center mt-5 py-8 border-t border-gray-200" key={i}>
+                                            <div className="flex  items-center mt-5 py-4 border-t border-gray-200" key={i}>
                                                 <div className="w-auto sm:w-1/4 mr-5">
-                                                    <img src={item.image} alt='Image' className="w-60 h-60 sm:w-full sm:h-full object-center mx-auto mb-5 md:mb-0" />
+                                                    <img src={item.image} alt='Image' className="w-32 h-32 sm:w-full sm:h-full object-center mx-auto mb-5 md:mb-0" />
                                                 </div>
                                                 <div className="md:pl-3 md:w-3/4">
                                                     <p className="text-base font-black leading-none text-rose-800 mb-3">{item.title}</p>
@@ -70,7 +70,7 @@ function ShoppingCart() {
                                                     <p className="text-sm text-gray-600 my-1">Reviews : {item.rating?.count}</p>
                                                     <p className="text-sm text-gray-600 flex items-center">Ratings : <StarIcon className="h-4 mx-1" /> {item.rating?.rate}</p>
                                                     <p className="text-sm text-gray-600 my-1">Price : ${item.price}</p>
-                                                    <div className="flex items-center justify-between pt-5 pr-6">
+                                                    <div className="flex items-center justify-between pt-5 pr-6 gap-4">
                                                         <p className="text-sm underline text-red-500 cursor-pointer" onClick={() => dispatch(removeItem(item.id))}>Remove</p>
                                                         <div className="flex gap-3">
                                                             <span className="cursor-pointer" onClick={() => { dispatch(decreaseItem(item)) }}>-</span>
@@ -95,11 +95,11 @@ function ShoppingCart() {
                             <>
                                 {
                                     addToCart.length > 0 ? (
-                                        <div className="xl:w-1/2 md:w-1/3 xl:w-1/4 w-full bg-gray-100 h-full">
-                                            <div className="flex flex-col md:h-screen px-10 py-20 justify-between overflow-y-auto">
+                                        <div className="lg:w-1/3 xl:w-1/4 w-full bg-gray-100 h-full">
+                                            <div className="flex flex-col md:h-screen px-5 pt-10 pb-16 justify-between overflow-y-auto">
                                                 <div>
                                                     <p className="text-3xl font-black leading-9 text-gray-800">Summary</p>
-                                                    <div className="flex items-center justify-between pt-16">
+                                                    <div className="flex items-center justify-between pt-10">
                                                         <p className="text-base leading-none text-gray-800">Subtotal</p>
                                                         <p className="text-base leading-none text-gray-800 font-medium">${(cartSubtotal).toFixed(2)}</p>
                                                     </div>
@@ -113,7 +113,7 @@ function ShoppingCart() {
                                                     </div>
                                                 </div>
                                                 <div className="mb-6">
-                                                    <div className="flex items-center pb-6 justify-between lg:pt-5 pt-20">
+                                                    <div className="flex items-center pb-6 justify-between lg:pt-5 pt-10">
                                                         <p className="text-2xl leading-normal text-gray-800">Total</p>
                                                         <p className="text-2xl font-bold leading-normal text-right text-gray-800">${(cartTotalAmount).toFixed(2)}</p>
                                                     </div>

@@ -6,7 +6,7 @@ const CategoryBtn = () => {
     return (
         <div className='my-16'>
             <div>
-                <p className='text-4xl text-center my-5 text-rose-800'>Shop by Category</p>
+                <p className='text-2xl sm:text-4xl text-center my-5 text-rose-800'>Shop by Category</p>
             </div>
             <div className='flex justify-center gap-4 flex-wrap '>
 

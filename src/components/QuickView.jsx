@@ -36,7 +36,7 @@ const QuickView = () => {
                     <>
                         <div className="flex justify-center items-center absolute top-0 right-0 left-0 w-full z-10">
                             <div id="menu" className={"md:px-6 px-4 py-12 w-full h-full flex justify-center  bg-transparent"}>
-                                <div className="w-full 2xl:mx-auto relative flex justify-start md:w-10/12 xl:w-8/12 2xl:w-7/12 item-start flex-col lg:flex-row lg:space-x-8 py-8 md:py-16 lg:py-12 px-4 md:px-6 bg-white shadow-2xl">
+                                <div className="w-full 2xl:mx-auto relative flex justify-start md:w-10/12 xl:w-8/12 2xl:w-7/12 item-start flex-col lg:flex-row lg:space-x-8 py-8 md:py-16 lg:py-12 px-4 md:px-6 bg-white border-2 shadow-2xl">
                                     <div className="w-full">
                                         <div className={"flex flex-shrink-0 transform "}>
                                             <img className="flex items-center mx-auto h-44 w-44 md:w-56 md:h-60 lg:w-72 lg:h-80 flex-col justify-center object-center"
@@ -89,7 +89,7 @@ const QuickView = () => {
                                             </div>
                                         </div>
                                         <div className="mt-10 flex justify-center items-center">
-                                            <button className="border border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 w-full  sm:w-96 hover:bg-black text-base font-medium leading-4 bg-gray-800 py-2 text-white" onClick={() => handleDispatch(data)}>Add to Cart</button>
+                                            <button className="border border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 w-64  sm:w-96 hover:bg-black text-base font-medium leading-4 bg-gray-800 py-2 text-white" onClick={() => handleDispatch(data)}>Add to Cart</button>
                                         </div>
                                     </div>
                                     <button onClick={() => dispatch(quickView())} aria-label="show Menu" className="absolute top-4 right-4  md:top-6 md:right-6 focus:outline-none focus:ring-2  focus:ring-gray-800">
