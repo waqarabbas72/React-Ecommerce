@@ -2,8 +2,7 @@ import { Fragment, useEffect } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import logo from '../../images/logo.png'
-import { ShoppingBagIcon } from '@heroicons/react/20/solid'
+import { ShoppingBagIcon, UserIcon } from '@heroicons/react/20/solid'
 import { controlCart, getTotal, itemsInCart } from '../../store/Slices/cardSlice';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -167,7 +166,7 @@ export default function Navbar() {
                         </Menu.Items>
                       </Transition>
                     </Menu>
-                  ) : (<button className='ml-3 font-bold text-green-700' onClick={() => loginWithRedirect()}>Login</button>)
+                  ) : (<button className='ml-3 font-bold text-gray-500 flex' onClick={() => loginWithRedirect()}><UserIcon className='h-6' />Login</button>)
                   }
                 </>
               </div>
@@ -236,10 +235,10 @@ export default function Navbar() {
                       className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                       onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
                     >
-                     Logout
+                      Logout
                     </Disclosure.Button>
                   </div>
-                </div>) : (<button className='block border-l-4 border-transparent pb-5 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800' onClick={() => loginWithRedirect()}>Login</button>)
+                </div>) : (<button className='block border-l-4 border-transparent pb-5 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800 flex' onClick={() => loginWithRedirect()}><UserIcon className='h-6' />Login</button>)
 
               }
             </Disclosure.Panel>

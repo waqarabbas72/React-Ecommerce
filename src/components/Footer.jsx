@@ -1,5 +1,4 @@
 import React from 'react'
-import logo from '../images/logo.png'
 import { FaFacebookF, FaInstagram,FaGithub, FaLinkedin, FaMailBulk, FaLocationArrow } from 'react-icons/fa'
 import Logo from './Navbar/Logo';
 import { Link } from 'react-router-dom';
@@ -41,7 +40,7 @@ const Footer = () => {
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-8 lg:grid-cols-4 mx-auto max-w-2xl p-4 pt-10 sm:px-6  lg:max-w-7xl lg:px-8 mt-20 border-b-2 mb-5'>
         <div className='flex flex-col gap-4 '>
           <div>
-            <Link to={`/`} onClick={() => window.scrollTo(0, 0)} className='text-white'><Logo /></Link>
+            <Link to={`/`} onClick={() => window.scrollTo(0, 0)} className='text-white'><Logo/></Link>
           </div>
           <div>
             <p className='text-lg text-gray-200'>We are a team of designers and developers that create high quality WordPress</p>
