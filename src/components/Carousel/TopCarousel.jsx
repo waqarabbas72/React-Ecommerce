@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import Button from '../Button/Button';
 import slide1 from '../../images/s1.jpg'
 import slide2 from '../../images/s2.jpg';
 import slide3 from '../../images/s3.jpg';
@@ -17,6 +16,8 @@ const TopCarousel = () => {
             showStatus={false}
             autoPlay={true}
             infiniteLoop={true}
+            showArrows={false}
+            swipeable={true}
             className='md:mx-10 mt-16'
         >
 
