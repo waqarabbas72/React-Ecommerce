@@ -1,6 +1,5 @@
 import React from 'react'
 import TopCarousel from '../components/Carousel/TopCarousel'
-import Cards from '../components/Cards/Cards'
 import CategoryBtn from '../components/CategoryBtn'
 import Slides from '../components/Slides/Slides'
 import ProductList from '../components/ProductList'
@@ -13,9 +12,8 @@ const Home = () => {
   return (
     <div>
       <TopCarousel />
-      <Cards />
-      <Slides />
       <CategoryBtn />
+      <Slides />
       <ProductList />
       <OurServices />
       <NewsLetter />
