@@ -33,5 +33,5 @@ export const CheckoutSchemas = Yup.object({
             return stringValue.length >= 3 && stringValue.length <= 4;
         }
         return true
-    }).required('Please a valid card number!'),
+    }).required('Please enter a valid card number!'),
 })
